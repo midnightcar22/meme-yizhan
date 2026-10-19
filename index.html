@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+  文件名：index.html
+  项目：MEME·译站 / MemeBridge —— 中国梗的跨文化转译平台
+  版本：v3.4
+  最后更新：2026-10-17
+  说明：SPA 外壳。结构（#page-wrap）、Tab Bar、Footer、下拉刷新圆环、右上角语言切换；
+        样式见 css/tailwind.css（本地构建产物）+ css/style.css（设计规范层），逻辑见 js/app.js，数据见 js/data.js，文案见 js/i18n.js（默认英文）。
+-->
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <!-- 移动端优先视口 + 暗黑模式（class="dark"，声明支持系统主题） -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0F0F0F" />
+  <meta name="color-scheme" content="dark light" />
+  <title>MEME·译站 — Cross-cultural Decoder for Chinese Memes</title>
+
+  <!-- SEO：站级描述 + OG 基础（出海定位默认英文；详情页 meta 由构建脚本逐梗生成） -->
+  <meta name="description" content="MEME·译站 decodes Chinese internet memes for the world: three-layer decoder, emotional equivalents, cultural discount index and meme lineage — so foreign audiences finally get the joke." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MEME·译站" />
+  <meta property="og:title" content="MEME·译站 — Cross-cultural Decoder for Chinese Memes" />
+  <meta property="og:description" content="Three-layer decoder, emotional equivalents, cultural discount index and meme lineage — Chinese memes, finally explained to the world." />
+  <meta property="og:image" content="https://placehold.co/1200x630/8B5CF6/FFFFFF?text=MEME%E8%AF%91%E7%AB%99" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- PWA：离线缓存 + 添加到主屏幕 -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Tailwind 编译产物（本地构建生成，勿手改；重建：npm run build:css） -->
+  <link rel="stylesheet" href="css/tailwind.css" />
+
+  <!-- 设计规范样式层（自定义组件/动画，加载在 Tailwind 之后作覆盖） -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="text-txt min-h-screen">
+
+  <!-- 下拉刷新：紫色旋转圆环 -->
+  <div id="ptr" class="ptr-ring" aria-hidden="true"><div class="ring"></div></div>
+
+  <!-- 语言切换：默认英文，点击切中文/EN（app.js toggleLang，即时全站重渲染） -->
+  <button id="lang-toggle" class="fixed top-3 right-3 z-50 pill px-3 py-1.5 text-xs font-bold bg-surface/90 backdrop-blur border border-primary/60 text-primary"
+          aria-label="Switch language" onclick="toggleLang()">中文</button>
+
+  <!-- SPA 根容器：移动端左右边距 16px，pb 为 Tab Bar + Footer 预留 -->
+  <main id="app" class="max-w-md mx-auto px-4 pt-4 pb-24 min-h-screen">
+    <div id="page-wrap" class="relative"></div>
+
+    <!-- 【合规设计】Footer：常驻法律链接 + Cookie Settings 入口 -->
+    <footer class="mt-10 py-8 border-t border-gray-800" style="background:#0a0a0a">
+      <nav class="flex justify-center gap-6 flex-wrap" aria-label="Legal and privacy links" data-i18n-aria="footer.aria">
+        <a href="#" class="text-sm text-gray-500 hover:text-white transition" data-i18n="footer.privacy" onclick="event.preventDefault();toast(t('common.comingSoon'))">Privacy Policy</a>
+        <a href="#" class="text-sm text-gray-500 hover:text-white transition" data-i18n="footer.terms" onclick="event.preventDefault();toast(t('common.comingSoon'))">Terms of Service</a>
+        <a href="#" class="text-sm text-gray-500 hover:text-white transition" data-i18n="footer.dmca" onclick="event.preventDefault();toast(t('common.comingSoon'))">DMCA</a>
+        <a href="#" class="text-sm text-gray-500 hover:text-white transition" data-i18n="footer.contact" onclick="event.preventDefault();toast(t('common.comingSoon'))">Contact Us</a>
+      </nav>
+      <p class="text-center mt-4">
+        <a href="#" class="text-xs text-gray-500 hover:text-white transition underline underline-offset-2" data-i18n="footer.cookieSettings"
+           onclick="event.preventDefault();openCookieConsent()">Cookie Settings</a>
+      </p>
+      <p class="text-center text-xs text-gray-600 mt-2" data-i18n="footer.copyright">© 2026 MemeBridge. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <!-- ====== 底部固定 Tab Bar（5个入口，选中项上方 2px 紫色指示条） ====== -->
+  <nav class="tabbar fixed bottom-0 left-0 right-0 bg-surface/95 backdrop-blur border-t border-white/10 z-50" aria-label="Main navigation" data-i18n-aria="nav.aria">
+    <div class="max-w-md mx-auto grid grid-cols-5 text-xs">
+      <a href="#/home"      data-tab="home"      class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Home" data-i18n-aria="nav.home"><span>🏠</span><span data-i18n="nav.home">Home</span></a>
+      <a href="#/discover"  data-tab="discover"  class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Discover" data-i18n-aria="nav.discover"><span>🧭</span><span data-i18n="nav.discover">Discover</span></a>
+      <a href="#/create"    data-tab="create"    class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Create" data-i18n-aria="nav.create"><span>🎨</span><span data-i18n="nav.create">Create</span></a>
+      <a href="#/challenge" data-tab="challenge" class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Challenges" data-i18n-aria="nav.challenge"><span>🏆</span><span data-i18n="nav.challenge">Challenges</span></a>
+      <a href="#/profile"   data-tab="profile"   class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Me" data-i18n-aria="nav.profile"><span>👤</span><span data-i18n="nav.profile">Me</span></a>
+    </div>
+  </nav>
+
+  <!-- 数据层（梗数据 + 传播学字段） -->
+  <script src="js/data.js"></script>
+  <!-- 国际化字典（t / getLang / setLang，默认英文，持久化） -->
+  <script src="js/i18n.js"></script>
+  <!-- 共享模板层（梗详情渲染，浏览器与 Node 构建共用） -->
+  <script src="js/wiki-template.js"></script>
+  <!-- 应用逻辑层（路由 + 传播学组件 + 创作工厂 + 合规前端） -->
+  <script src="js/app.js"></script>
+</body>
+</html>

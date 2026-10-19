@@ -1,0 +1,241 @@
+/* ============================================================
+ * 文件名：css/style.css
+ * 项目：MEME·译站 / MemeBridge
+ * 版本：v3.0
+ * 最后更新：2026-09-08
+ * ------------------------------------------------------------
+ * MEME·译站 —— 设计规范样式层（style.css）
+ * 设计规范：
+ *  - 暗黑模式：class="dark" 控制 + prefers-color-scheme 自动适配
+ *  - 圆角：卡片 16px / 按钮 12px / 标签 9999px（胶囊）
+ *  - 阴影：卡片紫色微光 0 4px 20px rgba(139,92,246,.15)
+ *  - 间距：移动端左右 16px，卡片间距 12px
+ *  - 动画一律使用 transform / opacity（GPU 加速）
+ * ============================================================ */
+
+:root {
+  --bg: #0F0F0F;
+  --surface: #1A1A1A;
+  --primary: #8B5CF6;
+  --green: #1DB954;
+  --orange: #F4A261;
+  --blue: #3B82F6;
+  --red: #EF4444;
+  --txt: #FFFFFF;
+  --muted: #A1A1AA;
+  --gray-node: #6B7280;
+  --card-shadow: 0 4px 20px rgba(139, 92, 246, 0.15);
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 系统主题自动适配（本项目默认为暗黑，亮色仅兜底基础变量） */
+@media (prefers-color-scheme: light) {
+  :root { color-scheme: dark; } /* 平台产品定位为暗黑优先，保持 dark */
+}
+
+html, body { background: var(--bg); }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: contain;
+}
+
+/* ---------- 卡片 / 按钮 / 标签规范 ---------- */
+.card {
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  background: var(--surface);
+}
+.btn { border-radius: 12px; }
+.pill { border-radius: 9999px; }
+
+/* 卡片 Hover（桌面端）：上浮 4px + 阴影加深 */
+@media (hover: hover) {
+  .meme-card { transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+  .meme-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+  }
+}
+
+/* ---------- 双列瀑布流 ---------- */
+.masonry { column-count: 2; column-gap: 12px; }
+.masonry > * { break-inside: avoid; margin-bottom: 12px; }
+
+/* ---------- 页面切换动画：旧页左滑出 / 新页右滑入（300ms） ---------- */
+.page-enter { animation: pageIn .3s var(--ease) both; }
+.page-exit  { animation: pageOut .3s var(--ease) both; position: absolute; inset: 0; pointer-events: none; }
+@keyframes pageIn  { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes pageOut { from { transform: translateX(0);     opacity: 1; } to { transform: translateX(-100%); opacity: 0; } }
+
+/* ---------- 折叠面板（三层解码器） ---------- */
+details.decoder summary { list-style: none; cursor: pointer; }
+details.decoder summary::-webkit-details-marker { display: none; }
+details.decoder[open] .chevron { transform: rotate(180deg); }
+.chevron { transition: transform .2s var(--ease); display: inline-block; }
+.stance-warning { border: 1px solid rgba(244, 162, 97, .5) !important; } /* ⚠️ 立场层警告色边框 */
+
+/* ---------- 媒介温度角标（圆形徽章，卡片左上角） ---------- */
+.temp-badge {
+  position: absolute; top: 8px; left: 8px; z-index: 2;
+  width: 28px; height: 28px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.4);
+}
+.temp-cold { background: var(--blue); }
+.temp-warm { background: var(--orange); }
+.temp-hot  { background: var(--red); }
+
+/* ---------- 模因谱系横向时间轴 ---------- */
+.lineage-track {
+  display: flex; align-items: flex-start; gap: 0;
+  overflow-x: auto; padding: 12px 4px 16px;
+  scrollbar-width: none;
+}
+.lineage-track::-webkit-scrollbar { display: none; }
+.lnode { flex: 0 0 auto; width: 108px; text-align: center; cursor: pointer; position: relative; }
+.lnode .dot {
+  width: 16px; height: 16px; border-radius: 9999px; margin: 0 auto;
+  border: 3px solid var(--bg); transition: transform .2s var(--ease);
+}
+.lnode:active .dot { transform: scale(1.3); }
+.lnode .dot-origin    { background: #FFFFFF; }
+.lnode .dot-copy      { background: var(--gray-node); }
+.lnode .dot-mutation  { background: var(--primary); }
+.lnode .dot-crossover { background: var(--blue); }
+.lnode .dot-reimport  { background: var(--green); }
+/* 节点间渐变连线 */
+.lnode .link {
+  position: absolute; top: 7px; left: calc(50% + 8px);
+  width: calc(100% - 16px); height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--blue));
+  opacity: .5;
+}
+.lnode:last-child .link { display: none; }
+
+/* ---------- 底部半屏详情（Bottom Sheet） ---------- */
+.sheet-mask {
+  position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 60;
+  opacity: 0; transition: opacity .25s var(--ease);
+}
+.sheet {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 61;
+  background: var(--surface); border-radius: 16px 16px 0 0;
+  transform: translateY(100%); transition: transform .3s var(--ease);
+  max-width: 28rem; margin: 0 auto;
+}
+.sheet-mask.show { opacity: 1; }
+.sheet.show { transform: translateY(0); }
+
+/* ---------- 点赞按钮：心形回弹 + 粒子 ---------- */
+.like-btn { transition: transform .15s var(--ease); }
+.like-btn.liked { animation: heartPop .4s var(--ease); }
+@keyframes heartPop {
+  0% { transform: scale(1); } 40% { transform: scale(1.3); }
+  70% { transform: scale(.92); } 100% { transform: scale(1); }
+}
+.particle {
+  position: fixed; width: 6px; height: 6px; border-radius: 9999px;
+  background: var(--primary); pointer-events: none; z-index: 70;
+  animation: particleFly .6s var(--ease) forwards;
+}
+@keyframes particleFly {
+  from { transform: translate(0, 0) scale(1); opacity: 1; }
+  to   { transform: translate(var(--dx), var(--dy)) scale(.3); opacity: 0; }
+}
+
+/* ---------- "+10pts" 掉落动画（2秒淡出） ---------- */
+.pts-float {
+  position: fixed; left: 50%; top: 72px; z-index: 80;
+  transform: translateX(-50%);
+  color: var(--primary); font-weight: 800; font-size: 20px;
+  text-shadow: 0 0 12px rgba(139,92,246,.6);
+  animation: ptsDrop 2s var(--ease) forwards;
+  pointer-events: none;
+}
+@keyframes ptsDrop {
+  0%   { transform: translate(-50%, -16px); opacity: 0; }
+  15%  { transform: translate(-50%, 0);     opacity: 1; }
+  70%  { transform: translate(-50%, 24px);  opacity: 1; }
+  100% { transform: translate(-50%, 40px);  opacity: 0; }
+}
+
+/* ---------- 底部 Tab Bar 指示条 ---------- */
+.tab-item { position: relative; transition: color .2s var(--ease); }
+.tab-item::before {
+  content: ""; position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 24px; height: 2px; border-radius: 9999px;
+  background: var(--primary);
+  transition: transform .2s var(--ease);
+}
+.tab-item.active::before { transform: translateX(-50%) scaleX(1); }
+.tabbar { padding-bottom: env(safe-area-inset-bottom); }
+
+/* ---------- 下拉刷新：紫色旋转圆环 ---------- */
+.ptr-ring {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 55;
+  display: flex; justify-content: center; pointer-events: none;
+  transform: translateY(-48px); transition: transform .2s var(--ease);
+}
+.ptr-ring.show { transform: translateY(12px); }
+.ptr-ring .ring {
+  width: 32px; height: 32px; border-radius: 9999px;
+  border: 3px solid rgba(139,92,246,.25); border-top-color: var(--primary);
+  animation: spin 1s linear infinite;
+  background: var(--bg); box-shadow: var(--card-shadow);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- 投票按钮已选状态 ---------- */
+.vote-opt { transition: all .2s var(--ease); }
+.vote-opt.voted { border-color: var(--primary) !important; color: var(--primary); }
+
+/* 滚动条隐藏工具 */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* ---------- 第三轮新增 ---------- */
+
+/* 【合规设计】Toast：顶部紫色条，3 秒消失 */
+.toast {
+  position: fixed; top: 12px; left: 50%; z-index: 120;
+  transform: translate(-50%, -200%);
+  max-width: min(90vw, 400px);
+  background: var(--surface); color: var(--txt);
+  border: 1px solid var(--primary); border-radius: 12px;
+  padding: 10px 16px; font-size: 13px;
+  box-shadow: var(--card-shadow);
+  transition: transform .3s var(--ease);
+  will-change: transform;
+}
+.toast.show { transform: translate(-50%, 0); }
+
+/* 【合规设计】Cookie Toggle Switch：48x24 轨道，选中紫色填充，白色圆点滑动 */
+.cookie-toggle {
+  flex: 0 0 auto; width: 48px; height: 24px; border-radius: 9999px;
+  background: #333; position: relative; transition: background .2s var(--ease);
+}
+.cookie-toggle .knob {
+  position: absolute; top: 2px; left: 2px;
+  width: 20px; height: 20px; border-radius: 9999px; background: #fff;
+  transition: transform .2s var(--ease);
+  will-change: transform;
+}
+.cookie-toggle.on { background: var(--primary); }
+.cookie-toggle.on .knob { transform: translateX(24px); }
+
+/* 【创作工具】上传校验失败：红框 + 抖动动画 0.4s */
+.upload-error { border: 2px solid #EF4444 !important; border-radius: 16px; animation: shake .4s var(--ease); }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); } 40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); } 80% { transform: translateX(5px); }
+}
+
+/* 模板选择按钮选中态 */
+.tpl-btn { transition: border-color .2s var(--ease), transform .15s var(--ease); will-change: transform; }
+.tpl-btn:active { transform: scale(.96); }
+
+/* 谱系节点/粒子等动画元素 GPU 加速 */
+.lnode .dot, .particle, .pts-float, .like-btn { will-change: transform; }

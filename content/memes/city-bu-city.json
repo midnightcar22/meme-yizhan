@@ -1,0 +1,29 @@
+{
+  "id": "city-bu-city",
+  "nameCN": "City不City",
+  "nameEN": "City or Not City",
+  "titleEn": "City or Not City? The Viral Chinese-English Phrase Explained",
+  "summaryEn": "A Chinglish catchphrase from a vlogger's China travel video, asking if something is trendy or has vibe — proud, not a grammar mistake.",
+  "pinyin": "city bu city",
+  "emotionEquivalent": "Is it vibe or not?",
+  "symbolLayer": {
+    "literalTranslation": "City or not city?",
+    "explanation": "中式英语句式'X不X'（肯定+否定疑问），中英混用的标志性结构"
+  },
+  "origin": "2024年外国博主保保熊在中国旅游时的中式英语提问",
+  "usage": "形容事物时髦/土气/有氛围感",
+  "commonMisreading": "以为是语法错误嘲笑中国人，实际是中式英语自信表达，海外已流行",
+  "accessibilityScore": { "language": 1, "context": 2, "adaptability": 5 },
+  "mediaTemperature": "warm",
+  "tags": ["旅游", "中式英语", "自信"],
+  "memeLineage": [
+    { "date": "2024-06", "event": "保保熊发布原视频", "type": "origin" },
+    { "date": "2024-07", "event": "全网模仿造句", "type": "copy" },
+    { "date": "2024-08", "event": "衍生'好City啊'", "type": "mutation" },
+    { "date": "2024-09", "event": "TikTok #citynotcity标签流行", "type": "crossover" },
+    { "date": "2025-03", "event": "海外网友用中式英语反向造句回传中文互联网", "type": "reimport" }
+  ],
+  "likes": 3420,
+  "shares": 890,
+  "image": "https://placehold.co/300x200/8B5CF6/FFFFFF?text=City不City"
+}

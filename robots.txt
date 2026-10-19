@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://memebridge.example.com/sitemap.xml

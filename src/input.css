@@ -1,0 +1,7 @@
+/* MEME·译站 —— Tailwind 入口文件
+ * 构建产物输出到 css/tailwind.css：npm run build:css
+ * 开发监听：npm run watch:css
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

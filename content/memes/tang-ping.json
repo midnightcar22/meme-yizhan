@@ -1,0 +1,29 @@
+{
+  "id": "tang-ping",
+  "nameCN": "躺平",
+  "nameEN": "Lying Flat",
+  "titleEn": "Tangping (躺平) / Lying Flat: China's Quiet Protest Against the Rat Race",
+  "summaryEn": "Tangping means 'lying flat' — opting out of the housing-and-overtime grind for a low-desire life, a gentle protest often misread as laziness.",
+  "pinyin": "tang ping",
+  "emotionEquivalent": "lying flat / quiet quitting",
+  "symbolLayer": {
+    "literalTranslation": "Lie down flat",
+    "explanation": "身体姿态词：放弃挣扎，平躺着不参与竞争游戏"
+  },
+  "origin": "2021年贴吧帖子《躺平即是正义》走红，作者分享低欲望生活方式",
+  "usage": "表达对过度竞争的消极抵抗：不买房、不加班、不内耗，降低欲望换自由",
+  "commonMisreading": "被海外媒体简单解读为'懒惰'或'罢工'，实际是消费主义与加班文化下的温和抗议，与 quiet quitting 精神相近但更具哲学性",
+  "accessibilityScore": { "language": 2, "context": 5, "adaptability": 4 },
+  "mediaTemperature": "warm",
+  "tags": ["生活态度", "反内卷", "哲学"],
+  "memeLineage": [
+    { "date": "2021-04", "event": "贴吧《躺平即是正义》帖子爆火", "type": "origin" },
+    { "date": "2021-05", "event": "全网讨论，官媒下场引发二次传播", "type": "copy" },
+    { "date": "2021-06", "event": "衍生'躺平学''45度青年'(躺不平也卷不动)", "type": "mutation" },
+    { "date": "2021-11", "event": "NYT/BBC 报道 'lying flat'，与西方 anti-work 运动并置", "type": "crossover" },
+    { "date": "2022-08", "event": "quiet quitting 在 TikTok 爆火，外媒回指其为中国'躺平'的西方变体", "type": "reimport" }
+  ],
+  "likes": 5230,
+  "shares": 1870,
+  "image": "https://placehold.co/300x200/1DB954/FFFFFF?text=躺平"
+}

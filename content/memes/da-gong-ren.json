@@ -1,0 +1,29 @@
+{
+  "id": "da-gong-ren",
+  "nameCN": "打工人",
+  "nameEN": "Corporate Slave",
+  "titleEn": "'Dagongren': How Chinese Workers Turned Labor into a Rallying Cry",
+  "summaryEn": "Dagongren, 'working person', is China's half-joking badge of wage labor — self-deprecating, unifying, and famous for 'Good morning, dagongren!'",
+  "pinyin": "da gong ren",
+  "emotionEquivalent": "corporate slave / 9-to-5 warrior",
+  "symbolLayer": {
+    "literalTranslation": "Hit-work-person",
+    "explanation": "'打工'(体力劳动式务工)+'人'，把白领工作降格为体力劳动，形成自嘲"
+  },
+  "origin": "2020年B站UP主'抽象带篮子'视频走红，引发全网打工人语录创作潮",
+  "usage": "上班族自嘲身份，用幽默消解职场压力，'早安，打工人'为标志性语录",
+  "commonMisreading": "被当作纯粹抱怨或丧文化，实际是带幽默感的团结式自嘲，类似英语'we're all wage slaves'的战友情",
+  "accessibilityScore": { "language": 2, "context": 4, "adaptability": 4 },
+  "mediaTemperature": "warm",
+  "tags": ["职场", "自嘲", "共鸣"],
+  "memeLineage": [
+    { "date": "2020-09", "event": "B站视频'打工人'语录走红", "type": "origin" },
+    { "date": "2020-10", "event": "全网'早安打工人'语录与表情包复制潮", "type": "copy" },
+    { "date": "2020-11", "event": "衍生'尾款人''干饭人'等'XX人'变体", "type": "mutation" },
+    { "date": "2021-04", "event": "Reddit r/antiwork 讨论中引入 'dagongren' 概念", "type": "crossover" },
+    { "date": "2022-02", "event": "海外媒体将其与 quiet quitting 对比报道，概念回流中文语境", "type": "reimport" }
+  ],
+  "likes": 4890,
+  "shares": 1520,
+  "image": "https://placehold.co/300x200/1DB954/FFFFFF?text=打工人"
+}

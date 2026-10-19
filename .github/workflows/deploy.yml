@@ -1,0 +1,66 @@
+# push 到 main（或手动触发）：全链构建 → 部署 GitHub Pages
+# 静态托管零配置：产物在仓库根目录，官方 upload-pages-artifact / deploy-pages 直接发布
+# SITE_URL 自动推导为项目页子路径：https://<owner>.github.io/<repo>/
+# （若仓库是 <owner>.github.io 用户页，子路径为空，需手动改下方 SITE_URL）
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 构建站点
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build for deployment
+        run: npm run build:deploy
+        env:
+          # 项目页子路径自动推导（canonical / og:url / sitemap 全部走这个值）
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+
+      - name: Clean dev-only files
+        run: |
+          rm -rf node_modules scripts src tests content .github \
+                 tailwind.config.js package.json package-lock.json .gitignore README.md
+          touch .nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+          include-hidden-files: true
+
+  deploy:
+    name: 部署 Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

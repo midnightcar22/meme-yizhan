@@ -1,0 +1,5 @@
+node_modules/
+
+# 构建产物：由 content/memes/*.json 生成（scripts/build-data.mjs），勿手改
+js/data.js
+

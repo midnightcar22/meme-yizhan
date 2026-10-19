@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--
+  文件名：src/meme-page.template.html
+  项目：MEME·译站 / MemeBridge
+  说明：梗详情页壳模板（勿手改）。scripts/build-memes.mjs 逐梗替换占位符后
+        输出到 memes/<id>.html。占位符：TITLE / DESC / URL / IMAGE / JSONLD / BODY / ID
+-->
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0F0F0F" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="robots" content="index,follow" />
+  <title>Tangping (躺平) / Lying Flat: China's Quiet Protest Against the Rat Race</title>
+  <meta name="description" content="Tangping means 'lying flat' — opting out of the housing-and-overtime grind for a low-desire life, a gentle protest often misread as laziness." />
+
+  <!-- Open Graph / Twitter（社交卡片，抓取时只读原始 HTML） -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="MEME·译站" />
+  <meta property="og:title" content="Tangping (躺平) / Lying Flat: China's Quiet Protest Against the Rat Race" />
+  <meta property="og:description" content="Tangping means 'lying flat' — opting out of the housing-and-overtime grind for a low-desire life, a gentle protest often misread as laziness." />
+  <meta property="og:url" content="https://memebridge.example.com/memes/tang-ping.html" />
+  <meta property="og:image" content="https://memebridge.example.com/assets/og/tang-ping.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tangping (躺平) / Lying Flat: China's Quiet Protest Against the Rat Race" />
+  <meta name="twitter:description" content="Tangping means 'lying flat' — opting out of the housing-and-overtime grind for a low-desire life, a gentle protest often misread as laziness." />
+  <meta name="twitter:image" content="https://memebridge.example.com/assets/og/tang-ping.png" />
+  <link rel="canonical" href="https://memebridge.example.com/memes/tang-ping.html" />
+
+  <!-- 结构化数据（搜索富摘要） -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Tangping (躺平) / Lying Flat: China's Quiet Protest Against the Rat Race","description":"Tangping means 'lying flat' — opting out of the housing-and-overtime grind for a low-desire life, a gentle protest often misread as laziness.","image":"https://memebridge.example.com/assets/og/tang-ping.png","inLanguage":"en","author":{"@type":"Organization","name":"MemeBridge"},"publisher":{"@type":"Organization","name":"MemeBridge"},"datePublished":"2021-04-01","dateModified":"2022-08-01","mainEntityOfPage":"https://memebridge.example.com/memes/tang-ping.html"}</script>
+
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="stylesheet" href="../css/tailwind.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body class="text-txt min-h-screen">
+  <!-- 语言切换（app.js toggleLang 即时重渲染） -->
+  <button id="lang-toggle" class="fixed top-3 right-3 z-50 pill px-3 py-1.5 text-xs font-bold bg-surface/90 backdrop-blur border border-primary/60 text-primary"
+          aria-label="Switch language" onclick="toggleLang()">中文</button>
+
+  <main class="max-w-md mx-auto px-4 pt-4 pb-24 min-h-screen">
+    <!-- 静态内容由构建脚本预渲染（爬虫可读全文）；
+         app.js 加载后用 localStorage 用户状态水合此容器 -->
+    <div data-static-wiki="tang-ping">
+
+    <a href="../index.html#/home" class="text-xs text-muted">← Back to Meme Wiki</a>
+    <header class="mt-3 mb-4">
+      <div class="relative">
+        <span class="temp-badge temp-warm" title="Warm Medium">🌡️</span>
+        <img src="https://placehold.co/300x200/1DB954/FFFFFF?text=躺平" alt="躺平 meme image" class="w-full h-40 object-cover rounded-2xl mb-3 card" onerror="this.onerror=null;this.src='https://placehold.co/300x200/1a1a1a/666?text=Meme+Error'" />
+      </div>
+      <h1 class="text-2xl font-extrabold">Tangping (躺平) / Lying Flat: China&#39;s Quiet Protest Against the Rat Race</h1>
+      <p class="text-sm text-muted mt-1">躺平 · tang ping · ≈ “lying flat / quiet quitting”</p>
+      <p class="text-sm text-muted leading-relaxed mt-2">Tangping means &#39;lying flat&#39; — opting out of the housing-and-overtime grind for a low-desire life, a gentle protest often misread as laziness.</p>
+      <div class="flex flex-wrap gap-2 mt-2">
+        <span class="pill text-[10px] bg-primary/15 text-primary px-2 py-1">#生活态度</span><span class="pill text-[10px] bg-primary/15 text-primary px-2 py-1">#反内卷</span><span class="pill text-[10px] bg-primary/15 text-primary px-2 py-1">#哲学</span>
+        <span class="pill text-[10px] temp-warm text-white px-2 py-1">🌡️ Warm Medium</span>
+      </div>
+    </header>
+    <h2 class="text-sm font-bold text-muted mt-6 mb-1">🌏 Original · 中文原文</h2>
+    <p class="text-[10px] text-muted mb-3">The full Chinese breakdown — symbol, context and stance layers, plus the meme lineage.</p>
+
+    <header class="mb-4">
+      <h2 class="text-xl font-extrabold">躺平 <span class="text-sm font-normal text-muted">Lying Flat</span></h2>
+      <p class="text-sm text-muted">Pinyin: tang ping ｜ Emotional equivalent: <span class="text-primary">“lying flat / quiet quitting”</span></p>
+    </header>
+
+    <section class="card border border-white/5 p-4 mb-4">
+      <h2 class="text-sm font-bold mb-2">📉 Cultural Discount Index <span class="text-[10px] text-muted font-normal">More purple stars = higher discount (harder to understand)</span></h2>
+      <div class="space-y-1.5 text-xs">
+        <div class="flex justify-between items-center"><span class="text-muted">Language dependence</span><span><span class="text-primary" style="font-size:8px">★</span><span class="text-primary" style="font-size:8px">★</span><span class="text-white/20" style="font-size:8px">★</span><span class="text-white/20" style="font-size:8px">★</span><span class="text-white/20" style="font-size:8px">★</span></span></div>
+        <div class="flex justify-between items-center"><span class="text-muted">Context depth</span><span><span class="text-primary" style="font-size:8px">★</span><span class="text-primary" style="font-size:8px">★</span><span class="text-primary" style="font-size:8px">★</span><span class="text-primary" style="font-size:8px">★</span><span class="text-primary" style="font-size:8px">★</span></span></div>
+        <div class="flex justify-between items-center"><span class="text-muted">Cross-cultural adaptability</span><span><span class="text-primary" style="font-size:8px">★</span><span class="text-primary" style="font-size:8px">★</span><span class="text-primary" style="font-size:8px">★</span><span class="text-primary" style="font-size:8px">★</span><span class="text-white/20" style="font-size:8px">★</span></span></div>
+      </div>
+      <p class="text-[10px] text-muted mt-2">Media temperature: 🌡️ Warm Medium — Medium participation, between cold and hot</p>
+    </section>
+
+    <h2 class="text-sm font-bold text-muted mb-2">Three-Layer Decoder</h2>
+    
+    <details class="decoder card border border-white/5 mb-3 " open>
+      <summary class="flex items-center justify-between p-4 font-bold text-sm">
+        <span> 🔤 Symbol Layer</span><span class="chevron text-muted">▾</span>
+      </summary>
+      <div class="px-4 pb-4 text-sm text-muted leading-relaxed">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-lg font-extrabold text-txt">躺平 <span class="text-xs font-normal text-muted">tang ping</span></p>
+        <p class="mt-1"><b class="text-txt">Literal translation: </b>Lie down flat</p>
+      </div>
+      <button class="btn bg-white/5 border border-white/10 px-3 py-1.5 text-xs" aria-label="Play pronunciation" onclick="pronounce('躺平','Lying Flat')">🔊 Pronounce</button>
+    </div>
+    <p class="mt-2"><b class="text-txt">Structure: </b>身体姿态词：放弃挣扎，平躺着不参与竞争游戏</p>
+    <p class="mt-1"><b class="text-txt">Emotional equivalent: </b><span class="text-primary">“lying flat / quiet quitting”</span>(not literal — an emotionally equivalent phrase)</p></div>
+    </details>
+    
+    <details class="decoder card border border-white/5 mb-3 " open>
+      <summary class="flex items-center justify-between p-4 font-bold text-sm">
+        <span> 📖 Context Layer</span><span class="chevron text-muted">▾</span>
+      </summary>
+      <div class="px-4 pb-4 text-sm text-muted leading-relaxed">
+    <div class="border-l-2 border-primary/40 pl-3 mb-3">
+      <div class="relative"><span class="absolute -left-[19px] top-1.5 w-2.5 h-2.5 rounded-full bg-primary"></span>
+        <p><b class="text-txt">Origin: </b>2021年贴吧帖子《躺平即是正义》走红，作者分享低欲望生活方式</p></div>
+      <div class="relative mt-2"><span class="absolute -left-[19px] top-1.5 w-2.5 h-2.5 rounded-full bg-white/40"></span>
+        <p><b class="text-txt">Usage: </b>表达对过度竞争的消极抵抗：不买房、不加班、不内耗，降低欲望换自由</p></div>
+    </div>
+    <p class="text-[10px] mb-1.5">Where does this meme fit best? Tap to vote:</p>
+    <div class="flex flex-wrap gap-2">
+      <button class="vote-opt pill text-xs px-3 py-1 bg-white/5 border border-white/10 "
+          aria-label="Vote: #Daily speech" onclick="vote(this,'ctx-tang-ping-#日常口语')">#Daily speech</button><button class="vote-opt pill text-xs px-3 py-1 bg-white/5 border border-white/10 "
+          aria-label="Vote: #Social media" onclick="vote(this,'ctx-tang-ping-#社交媒体')">#Social media</button><button class="vote-opt pill text-xs px-3 py-1 bg-white/5 border border-white/10 "
+          aria-label="Vote: #School" onclick="vote(this,'ctx-tang-ping-#校园')">#School</button><button class="vote-opt pill text-xs px-3 py-1 bg-white/5 border border-white/10 "
+          aria-label="Vote: #Work" onclick="vote(this,'ctx-tang-ping-#职场')">#Work</button>
+    </div></div>
+    </details>
+    
+    <details class="decoder card border border-white/5 mb-3 stance-warning" >
+      <summary class="flex items-center justify-between p-4 font-bold text-sm">
+        <span> ⚠️ Stance Layer</span><span class="chevron text-muted">▾</span>
+      </summary>
+      <div class="px-4 pb-4 text-sm text-muted leading-relaxed">
+    <div class="grid grid-cols-2 gap-2">
+      <div class="rounded-xl border border-red-500/40 bg-red-500/10 p-3">
+        <p class="text-[10px] font-bold text-red-400 mb-1">⚠️ Common Misreading</p>
+        <p class="text-xs">被海外媒体简单解读为&#39;懒惰&#39;或&#39;罢工&#39;，实际是消费主义与加班文化下的温和抗议，与 quiet quitting 精神相近但更具哲学性</p>
+      </div>
+      <div class="rounded-xl border border-green-500/40 bg-green-500/10 p-3">
+        <p class="text-[10px] font-bold text-accentGreen mb-1">✅ What It Actually Means</p>
+        <p class="text-xs">In context: 表达对过度竞争的消极抵抗：不买房、不加班、不内耗，降低欲望换自由 Use negotiated decoding — avoid adversarial misreading.</p>
+      </div>
+    </div></div>
+    </details>
+
+    <h2 class="text-sm font-bold text-muted mt-5 mb-1">Meme Lineage</h2>
+    
+    <div class="lineage-track no-scrollbar -mx-4 px-4">
+      
+        <div class="lnode" role="button" aria-label="Lineage node: Origin" onclick="openLineageSheet('tang-ping',0)">
+          <span class="link"></span>
+          <div class="dot dot-origin"></div>
+          <p class="text-[10px] text-muted mt-1.5">2021-04</p>
+          <p class="text-[10px] font-bold mt-0.5 leading-tight">Origin</p>
+        </div>
+        <div class="lnode" role="button" aria-label="Lineage node: Replication" onclick="openLineageSheet('tang-ping',1)">
+          <span class="link"></span>
+          <div class="dot dot-copy"></div>
+          <p class="text-[10px] text-muted mt-1.5">2021-05</p>
+          <p class="text-[10px] font-bold mt-0.5 leading-tight">Replication</p>
+        </div>
+        <div class="lnode" role="button" aria-label="Lineage node: Mutation" onclick="openLineageSheet('tang-ping',2)">
+          <span class="link"></span>
+          <div class="dot dot-mutation"></div>
+          <p class="text-[10px] text-muted mt-1.5">2021-06</p>
+          <p class="text-[10px] font-bold mt-0.5 leading-tight">Mutation</p>
+        </div>
+        <div class="lnode" role="button" aria-label="Lineage node: Cross-cultural" onclick="openLineageSheet('tang-ping',3)">
+          <span class="link"></span>
+          <div class="dot dot-crossover"></div>
+          <p class="text-[10px] text-muted mt-1.5">2021-11</p>
+          <p class="text-[10px] font-bold mt-0.5 leading-tight">Cross-cultural</p>
+        </div>
+        <div class="lnode" role="button" aria-label="Lineage node: Localized Re-import" onclick="openLineageSheet('tang-ping',4)">
+          <span class="link"></span>
+          <div class="dot dot-reimport"></div>
+          <p class="text-[10px] text-muted mt-1.5">2022-08</p>
+          <p class="text-[10px] font-bold mt-0.5 leading-tight">Localized Re-import</p>
+        </div>
+    </div>
+    <p class="text-[10px] text-muted">← Swipe to explore · tap a node for details</p>
+
+    <div class="flex gap-3 mt-4 text-sm">
+      <button class="like-btn btn flex-1 bg-surface border border-white/10 py-2 " aria-label="Like" onclick="likeMeme(event,'tang-ping')">
+        ❤️ 5230
+      </button>
+      <button class="btn flex-1 bg-surface border border-white/10 py-2" aria-label="Share" onclick="shareMeme('tang-ping')">↗ Share 1870</button>
+    </div>
+
+    
+    <h2 class="text-sm font-bold text-muted mt-6 mb-2">Micro-tasks · finish any for +10pts</h2>
+    <div class="card border border-white/5 p-4 mb-3">
+      <p class="text-xs font-bold mb-2">Will this meme go viral overseas?</p>
+      <div class="flex gap-2">
+        <button class="vote-opt btn flex-1 border border-white/10 bg-white/5 py-2 text-sm " aria-label="Vote: can go viral" onclick="voteTask(this,'fire-tang-ping','yes')">🔥 Yes</button>
+        <button class="vote-opt btn flex-1 border border-white/10 bg-white/5 py-2 text-sm " aria-label="Vote: cannot go viral" onclick="voteTask(this,'fire-tang-ping','no')">❄️ No</button>
+      </div>
+    </div>
+    <div class="card border border-white/5 p-4 mb-3">
+      <p class="text-xs font-bold mb-2">Best English equivalent?</p>
+      <div class="flex gap-2 flex-wrap">
+        
+          <button class="vote-opt pill text-xs px-4 py-1.5 bg-white/5 border border-white/10 "
+            aria-label="Vote: lying flat" onclick="voteTask(this,'eq-tang-ping','lying flat')">lying flat</button>
+          <button class="vote-opt pill text-xs px-4 py-1.5 bg-white/5 border border-white/10 "
+            aria-label="Vote: quiet quitting" onclick="voteTask(this,'eq-tang-ping','quiet quitting')">quiet quitting</button>
+          <button class="vote-opt pill text-xs px-4 py-1.5 bg-white/5 border border-white/10 "
+            aria-label="Vote: Fire" onclick="voteTask(this,'eq-tang-ping','Fire')">Fire</button>
+      </div>
+    </div>
+    <div class="card border border-white/5 p-4 mb-3">
+      <p class="text-xs font-bold mb-2">Add a usage context</p>
+      <form class="flex gap-2" onsubmit="return addSceneTag(event,'tang-ping')">
+        <input id="scene-tang-ping" placeholder="e.g. #school #work" maxlength="20" aria-label="Add usage context tag"
+               class="btn flex-1 bg-white/5 border border-white/10 px-3 py-2 text-sm outline-none focus:border-primary" />
+        <button class="btn bg-primary px-4 text-sm font-bold" aria-label="Submit context tag">Submit</button>
+      </form>
+      <div class="flex flex-wrap gap-2 mt-2" id="tags-tang-ping">
+        
+      </div>
+    </div>
+    </div>
+  </main>
+
+  <!-- 底部固定 Tab Bar（返回应用各页） -->
+  <nav class="tabbar fixed bottom-0 left-0 right-0 bg-surface/95 backdrop-blur border-t border-white/10 z-50" aria-label="Main navigation" data-i18n-aria="nav.aria">
+    <div class="max-w-md mx-auto grid grid-cols-5 text-xs">
+      <a href="../index.html#/home"      class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Home" data-i18n-aria="nav.home"><span>🏠</span><span data-i18n="nav.home">Home</span></a>
+      <a href="../index.html#/discover"  class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Discover" data-i18n-aria="nav.discover"><span>🧭</span><span data-i18n="nav.discover">Discover</span></a>
+      <a href="../index.html#/create"    class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Create" data-i18n-aria="nav.create"><span>🎨</span><span data-i18n="nav.create">Create</span></a>
+      <a href="../index.html#/challenge" class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Challenges" data-i18n-aria="nav.challenge"><span>🏆</span><span data-i18n="nav.challenge">Challenges</span></a>
+      <a href="../index.html#/profile"   class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Me" data-i18n-aria="nav.profile"><span>👤</span><span data-i18n="nav.profile">Me</span></a>
+    </div>
+  </nav>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/wiki-template.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

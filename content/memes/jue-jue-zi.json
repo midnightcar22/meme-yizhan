@@ -1,0 +1,29 @@
+{
+  "id": "jue-jue-zi",
+  "nameCN": "绝绝子",
+  "nameEN": "Absolutely Iconic",
+  "titleEn": "'Juejuezi': The Fandom Slang That Went from Praise to Sarcasm",
+  "summaryEn": "Born as fandom slang for 'absolutely iconic', juejuezi evolved into a deadpan way to say 'I can't even' — from gushing praise to sarcastic shade.",
+  "pinyin": "jue jue zi",
+  "emotionEquivalent": "slay / iconic",
+  "symbolLayer": {
+    "literalTranslation": "Absolutely-ly-zi",
+    "explanation": "'绝'(极致)重叠+'子'(古风词缀)，叠词+后缀构成夸张赞叹语气"
+  },
+  "origin": "2021年前后饭圈用语，源自综艺粉丝对偶像的夸张夸赞",
+  "usage": "表达极度赞叹或（反讽地）表达无语，常见于美食/追星场景",
+  "commonMisreading": "直译为'absolute son'闹笑话；也有人以为只是褒义，实际常用于阴阳怪气的反讽",
+  "accessibilityScore": { "language": 4, "context": 3, "adaptability": 2 },
+  "mediaTemperature": "cold",
+  "tags": ["饭圈", "夸张", "反讽"],
+  "memeLineage": [
+    { "date": "2021-03", "event": "饭圈粉丝用语'绝绝子'在综艺超话出现", "type": "origin" },
+    { "date": "2021-08", "event": "小红书/微博大规模复制，'XX子'句式泛滥", "type": "copy" },
+    { "date": "2021-12", "event": "网友开始反讽使用，'无语子''下头子'等变异体出现", "type": "mutation" },
+    { "date": "2022-06", "event": "TikTok 博主用 'slay-zi' 玩梗介绍中文叠词文化", "type": "crossover" },
+    { "date": "2023-05", "event": "海外中文学习者把'XX子'句式用于英语造句回传", "type": "reimport" }
+  ],
+  "likes": 2180,
+  "shares": 640,
+  "image": "https://placehold.co/300x200/F4A261/FFFFFF?text=绝绝子"
+}
