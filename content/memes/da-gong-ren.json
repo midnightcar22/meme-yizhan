@@ -5,23 +5,29 @@
   "titleEn": "'Dagongren': How Chinese Workers Turned Labor into a Rallying Cry",
   "summaryEn": "Dagongren, 'working person', is China's half-joking badge of wage labor — self-deprecating, unifying, and famous for 'Good morning, dagongren!'",
   "pinyin": "da gong ren",
-  "emotionEquivalent": "corporate slave / 9-to-5 warrior",
+  "emotionEquivalent": "职场苦工 / 9-5 战士",
+  "emotionEquivalentEn": "corporate slave / 9-to-5 warrior",
   "symbolLayer": {
-    "literalTranslation": "Hit-work-person",
-    "explanation": "'打工'(体力劳动式务工)+'人'，把白领工作降格为体力劳动，形成自嘲"
+    "literalTranslation": "打工的人",
+    "literalTranslationEn": "Hit-work-person",
+    "explanation": "'打工'(体力劳动式务工)+'人'，把白领工作降格为体力劳动，形成自嘲",
+    "explanationEn": "'Da gong' (manual-labor work) + 'ren' (person): white-collar work downgraded to manual labor, used for self-mockery."
   },
   "origin": "2020年B站UP主'抽象带篮子'视频走红，引发全网打工人语录创作潮",
+  "originEn": "A 2020 Bilibili creator's video went viral, sparking a wave of dagongren catchphrases.",
   "usage": "上班族自嘲身份，用幽默消解职场压力，'早安，打工人'为标志性语录",
+  "usageEn": "Office workers mocking their own identity to defuse workplace pressure; 'Good morning, dagongren!' is the signature line.",
   "commonMisreading": "被当作纯粹抱怨或丧文化，实际是带幽默感的团结式自嘲，类似英语'we're all wage slaves'的战友情",
+  "commonMisreadingEn": "Read as pure complaint or a 'giving-up' culture; it's actually humorous, uniting self-mockery — like the camaraderie of 'we're all wage slaves'.",
   "accessibilityScore": { "language": 2, "context": 4, "adaptability": 4 },
   "mediaTemperature": "warm",
   "tags": ["职场", "自嘲", "共鸣"],
   "memeLineage": [
-    { "date": "2020-09", "event": "B站视频'打工人'语录走红", "type": "origin" },
-    { "date": "2020-10", "event": "全网'早安打工人'语录与表情包复制潮", "type": "copy" },
-    { "date": "2020-11", "event": "衍生'尾款人''干饭人'等'XX人'变体", "type": "mutation" },
-    { "date": "2021-04", "event": "Reddit r/antiwork 讨论中引入 'dagongren' 概念", "type": "crossover" },
-    { "date": "2022-02", "event": "海外媒体将其与 quiet quitting 对比报道，概念回流中文语境", "type": "reimport" }
+    { "date": "2020-09", "event": "B站视频'打工人'语录走红", "eventEn": "Bilibili video 'dagongren' catchphrases go viral", "type": "origin" },
+    { "date": "2020-10", "event": "全网'早安打工人'语录与表情包复制潮", "eventEn": "'Good morning, dagongren' quotes and stickers flood the internet", "type": "copy" },
+    { "date": "2020-11", "event": "衍生'尾款人''干饭人'等'XX人'变体", "eventEn": "'Wei kuan ren' and 'gan fan ren' among the 'XX-ren' variants", "type": "mutation" },
+    { "date": "2021-04", "event": "Reddit r/antiwork 讨论中引入 'dagongren' 概念", "eventEn": "Reddit r/antiwork picks up the 'dagongren' concept", "type": "crossover" },
+    { "date": "2022-02", "event": "海外媒体将其与 quiet quitting 对比报道，概念回流中文语境", "eventEn": "Overseas media compare it with quiet quitting; the concept flows back to Chinese discourse", "type": "reimport" }
   ],
   "likes": 4890,
   "shares": 1520,

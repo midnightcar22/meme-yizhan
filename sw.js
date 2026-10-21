@@ -1,7 +1,7 @@
 /* 文件名：sw.js
  * 项目：MEME·译站 / MemeBridge
- * 版本：v3.5
- * 最后更新：2026-10-17
+ * 版本：v3.7
+ * 最后更新：2026-10-21
  * Service Worker：离线缓存（PWA 核心）
  * 策略：
  *  - 页面导航（HTML）：网络优先，失败回退缓存 —— 保证发版后用户能拿到新页面
@@ -9,7 +9,7 @@
  *  - 非 GET 请求（POST 等）与非 http(s) 协议一律直连，不缓存
  *  - 缓存名带版本号，发版时递增 CACHE_NAME 即自动清理旧缓存
  */
-const CACHE_NAME = "meme-yizhan-v8";
+const CACHE_NAME = "meme-yizhan-v10";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -20,11 +20,16 @@ const CORE_ASSETS = [
   "./js/wiki-template.js",
   "./js/app.js",
   "./manifest.json",
+  "./assets/og/cao-tai-ban-zi.png",
   "./assets/og/city-bu-city.png",
   "./assets/og/da-gong-ren.png",
+  "./assets/og/jiu-jiu-liu.png",
   "./assets/og/jue-jue-zi.png",
+  "./assets/og/mo-yu.png",
   "./assets/og/nei-juan.png",
-  "./assets/og/tang-ping.png"
+  "./assets/og/po-fang.png",
+  "./assets/og/tang-ping.png",
+  "./assets/og/yyds.png"
 ];
 
 // 安装：预缓存核心资源

@@ -1,0 +1,35 @@
+{
+  "id": "jiu-jiu-liu",
+  "nameCN": "996",
+  "nameEN": "The 996 Schedule",
+  "titleEn": "996 (jiǔ jiǔ liù): China's Overtime Culture in Three Digits",
+  "summaryEn": "996 means 9am to 9pm, six days a week — shorthand for China's overtime culture, the spark of the 996.ICU protests, and now an international loanword.",
+  "pinyin": "jiu jiu liu",
+  "emotionEquivalent": "加班文化 / 超时工作",
+  "emotionEquivalentEn": "crunch culture / overwork",
+  "symbolLayer": {
+    "literalTranslation": "早 9 晚 9、每周 6 天",
+    "literalTranslationEn": "9-9-6 (nine to nine, six days)",
+    "explanation": "用极简数字压缩一整套作息制度（早 9 晚 9、每周 6 天），汉语数字构词的典型样本",
+    "explanationEn": "Three digits compressing a whole work schedule (9am to 9pm, six days a week) — a classic Chinese numeral construction."
+  },
+  "origin": "2010s 中国互联网公司普遍工时；2019 年「996.ICU」GitHub 项目引爆全球技术社区关注，程序员以此抗议超长工时",
+  "originEn": "Standard 2010s working hours at Chinese internet companies; in 2019 the '996.ICU' GitHub project drew global tech-community attention as programmers protested.",
+  "usage": "形容高强度、无薪加班的工作制度；也作反讽引用（「996 是福报」）",
+  "usageEn": "Describes a high-intensity, unpaid-overtime work regime; also used ironically ('996 is a blessing').",
+  "commonMisreading": "海外媒体常简化为「中国人全都在超负荷工作」，实际是特定行业（互联网/初创）现象，且伴随公开的劳动者抵制运动",
+  "commonMisreadingEn": "Overseas media often reduce it to 'all Chinese people are overworking'; it's specific to tech and startup industries and was accompanied by public labor protests.",
+  "accessibilityScore": { "language": 1, "context": 3, "adaptability": 2 },
+  "mediaTemperature": "hot",
+  "tags": ["职场", "加班文化", "劳动权益"],
+  "memeLineage": [
+    { "date": "2016-09", "event": "互联网公司普遍实行 996 工时，程序员社区开始用「996」指代", "eventEn": "Internet companies adopt the 996 schedule; the term spreads in programmer communities", "type": "origin" },
+    { "date": "2019-03", "event": "「996.ICU」GitHub 项目发布，星数一度登顶全球 Trending", "eventEn": "'996.ICU' GitHub project tops global Trending", "type": "copy" },
+    { "date": "2019-04", "event": "马云「996 是福报」言论引发全网反讽，衍生「福报」梗", "eventEn": "Jack Ma's '996 is a blessing' remark fuels an ironic backlash and the 'blessing' meme", "type": "mutation" },
+    { "date": "2021-08", "event": "最高法明确「996」违法，BBC/NYT 等跟进报道，「996」成为英语借词", "eventEn": "Supreme People's Court rules 996 illegal; BBC/NYT follow up; '996' becomes an English loanword", "type": "crossover" },
+    { "date": "2024-05", "event": "大小周取消潮，「996」从普遍现象退为历史符号", "eventEn": "'Big small week' schedules phased out; 996 becomes a historical symbol", "type": "reimport" }
+  ],
+  "likes": 4720,
+  "shares": 1430,
+  "image": "https://placehold.co/300x200/8B5CF6/FFFFFF?text=996"
+}

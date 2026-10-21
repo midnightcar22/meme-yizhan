@@ -55,11 +55,15 @@ const avgDiscount = (m) => {
   return (s.language + s.context + s.adaptability) / 3;
 };
 
-/* ---------- 组件：梗卡片（首页/发现页瀑布流共用） ---------- */
+/* ---------- 组件：梗卡片（首页/发现页瀑布流共用；词条/拼音不变，其余随语言） ---------- */
 function memeCard(m) {
   if (!m) return "";
   const tp = TEMP[m.mediaTemperature] || TEMP.warm;
   const liked = user().liked.includes(m.id);
+  const isZh = getLang() === "zh";
+  const title = isZh ? fb.name(m) : (m.nameEN || fb.name(m));
+  const sub = isZh ? (m.nameEN || "") : fb.name(m);
+  const emotion = isZh ? (m.emotionEquivalent || "") : (m.emotionEquivalentEn || m.emotionEquivalent || "");
   return `
     <a href="memes/${m.id}.html" class="meme-card card block overflow-hidden border border-white/5">
       <div class="relative">
@@ -68,11 +72,11 @@ function memeCard(m) {
       </div>
       <div class="p-3">
         <div class="flex items-baseline justify-between gap-2">
-          <h3 class="font-bold text-base">${sanitizeInput(fb.name(m))}</h3>
+          <h3 class="font-bold text-base">${sanitizeInput(title)}</h3>
           <span class="text-[10px] text-muted">${sanitizeInput(m.pinyin || "")}</span>
         </div>
-        <p class="text-xs text-muted mt-0.5">${sanitizeInput(m.nameEN || "")}</p>
-        <p class="text-xs text-primary mt-1">≈ “${sanitizeInput(m.emotionEquivalent || "")}”</p>
+        <p class="text-xs text-muted mt-0.5">${sanitizeInput(sub)}</p>
+        <p class="text-xs text-primary mt-1">≈ “${sanitizeInput(emotion)}”</p>
         <div class="flex items-end justify-between mt-2">
           <span class="text-xs ${liked ? "text-primary" : "text-muted"}">❤️ ${(m.likes || 0) + (liked ? 1 : 0)}</span>
           ${miniDiscount(m.accessibilityScore)}
@@ -83,14 +87,15 @@ function memeCard(m) {
 
 /* ---------- 页面：首页 #/home ---------- */
 function renderHome() {
-  const hot = MEME_DATA[0] || {};
+  // 今日热梗 = 点赞最高（梗库扩容后，字母序首位不再是编辑推荐位）
+  const hot = MEME_DATA.slice().sort((a, b) => (b.likes || 0) - (a.likes || 0))[0] || {};
   return `
     <section class="relative rounded-2xl overflow-hidden mb-4 card">
       <img src="${hot.image || ""}" alt="${t("meme.alt", { name: fb.name(hot) })}" class="w-full h-44 object-cover opacity-70" ${fb.imgErr} />
       <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-transparent p-4 flex flex-col justify-end">
         <span class="text-[10px] uppercase tracking-widest text-accentGreen">${t("home.hero.badge")}</span>
         <h1 class="text-2xl font-extrabold mt-1">${sanitizeInput(fb.name(hot))} <span class="text-sm font-normal text-muted">${sanitizeInput(hot.nameEN || "")}</span></h1>
-        <p class="text-xs text-muted mt-1">${sanitizeInput(fb.usage(hot))}</p>
+        <p class="text-xs text-muted mt-1">${sanitizeInput(getLang() === "zh" ? fb.usage(hot) : (hot.usageEn || fb.usage(hot)))}</p>
         <a href="memes/${hot.id}.html" class="btn mt-3 self-start bg-primary text-white text-xs font-bold px-4 py-2">${t("home.hero.cta")}</a>
       </div>
     </section>
@@ -410,7 +415,8 @@ function labAdapt(reshuffle = false) {
   const box = $("#adapt-result"), txt = $("#adapt-text"), en = $("#adapt-en");
   if (!box || !txt) return;
   txt.textContent = lastAdapt; // textContent 渲染，杜绝 XSS
-  if (en) en.textContent = meme ? t("adapt.from", { name: fb.name(meme), eq: meme.emotionEquivalent || "" }) : "";
+  const eq = getLang() === "zh" ? (meme.emotionEquivalent || "") : (meme.emotionEquivalentEn || meme.emotionEquivalent || "");
+  if (en) en.textContent = meme ? t("adapt.from", { name: fb.name(meme), eq }) : "";
   box.classList.remove("hidden");
   awardPts(10);
 }
@@ -451,7 +457,9 @@ const TAG_FILTERS = [
   { key: "吐槽", label: "tag.roast" },
   { key: "恋爱", label: "tag.love" },
   { key: "校园", label: "tag.school" },
-  { key: "社会", label: "tag.society" }
+  { key: "社会", label: "tag.society" },
+  { key: "情绪", label: "tag.emotion" },
+  { key: "语言", label: "tag.language" }
 ];
 
 /* 【传播学设计】发现页筛选：按媒介温度（冷热媒介）/标签/文化折扣（折扣理论）三维过滤 */
@@ -462,7 +470,7 @@ function filterMemes() {
   // 媒介温度筛选
   if (temp !== "all") list = list.filter(m => m.mediaTemperature === temp);
   // 标签筛选（职场/社会等映射到数据 tags，吐槽映射"反讽/自嘲"语义类）
-  const TAG_MAP = { "吐槽": ["反讽", "自嘲"], "职场": ["职场"], "旅游": ["旅游"], "社会": ["社会"], "恋爱": ["恋爱"], "校园": ["校园"] };
+  const TAG_MAP = { "吐槽": ["反讽", "自嘲"], "职场": ["职场"], "旅游": ["旅游"], "社会": ["社会", "社会观察"], "恋爱": ["恋爱"], "校园": ["校园"], "情绪": ["情绪"], "语言": ["语言现象"] };
   if (tag !== "all") {
     const keys = TAG_MAP[tag] || [tag];
     list = list.filter(m => (m.tags || []).some(t => keys.includes(t)));
@@ -566,7 +574,7 @@ function ladderWidget() {
 
 /* ---------- 页面：社区挑战 #/challenge（含 UGC 举报按钮） ---------- */
 function renderChallenge() {
-  const themeMeme = MEME_DATA[0] ? fb.name(MEME_DATA[0]) : "City不City";
+  const themeMeme = "City不City"; // 挑战主题固定，不随梗库字母序变化
   return `
     <h1 class="text-xl font-extrabold mb-1">${t("challenge.title")}</h1>
     <div class="card bg-gradient-to-r from-primary/30 to-accentGreen/20 p-4 mb-4">
@@ -724,7 +732,7 @@ function shareMeme(id) {
   if (!m) return;
   const url = location.origin + siteBase() + "memes/" + id + ".html";
   if (navigator.share) {
-    navigator.share({ title: `${fb.name(m)} ${m.nameEN || ""}`, text: fb.usage(m), url }).catch(() => {});
+    navigator.share({ title: `${fb.name(m)} ${m.nameEN || ""}`, text: getLang() === "zh" ? fb.usage(m) : (m.usageEn || fb.usage(m)), url }).catch(() => {});
   } else if (navigator.clipboard) {
     navigator.clipboard.writeText(url).then(() => toast(t("toast.linkCopied"))).catch(() => {});
   }
@@ -742,7 +750,7 @@ function openLineageSheet(memeId, idx) {
       <span class="text-xs font-bold">${t(LINEAGE_TYPE[n.type] || n.type)}</span>
       <span class="text-xs text-muted">${sanitizeInput(n.date || "")}</span>
     </div>
-    <p class="text-sm leading-relaxed">${sanitizeInput(n.event || "")}</p>`);
+    <p class="text-sm leading-relaxed">${sanitizeInput(getLang() === "zh" ? (n.event || "") : (n.eventEn || n.event || ""))}</p>`);
 }
 
 /* ---------- 通用底部半屏 Sheet ---------- */

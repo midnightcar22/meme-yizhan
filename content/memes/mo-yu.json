@@ -1,0 +1,35 @@
+{
+  "id": "mo-yu",
+  "nameCN": "摸鱼",
+  "nameEN": "Slacking Off",
+  "titleEn": "Moyu (摸鱼): The Art of Slacking Off at Work — China's 'Quiet Quitting' Cousin",
+  "summaryEn": "Moyu, literally 'groping fish', means slacking off at work while looking busy — meetings on mute, shopping at your desk, the protest against overtime.",
+  "pinyin": "mo yu",
+  "emotionEquivalent": "上班摸鱼 / 划水",
+  "emotionEquivalentEn": "slacking off / goofing off at work",
+  "symbolLayer": {
+    "literalTranslation": "在水里摸鱼",
+    "literalTranslationEn": "Fish-groping (moyu)",
+    "explanation": "成语「浑水摸鱼」的截短活用：只留动作+对象，自带画面感；「在水里摸鱼」原指趁浑水捞鱼",
+    "explanationEn": "A clipped use of the idiom 'groping fish in muddy water': action + object only, inherently visual; originally meant profiting from chaos."
+  },
+  "origin": "源自成语「浑水摸鱼」（趁乱牟利）；2020 年左右在职场语境中语义漂移为「上班时间偷懒」",
+  "originEn": "From the idiom 'groping fish in muddy water' (profiting from chaos); around 2020 its meaning drifted to 'slacking off at work'.",
+  "usage": "「在摸鱼」= 正在偷懒；「摸鱼神器」= 帮助伪装工作的工具；与「带薪拉屎」同属职场消极抵抗词汇群",
+  "usageEn": "'Slacking off' at work while appearing busy; 'moyu gadgets' = tools that help fake work; related to 'paid pooping' as workplace-resistance vocabulary.",
+  "commonMisreading": "容易被读成纯粹的懒惰；实际是 996 高压下的微型抵抗，与 quiet quitting 同属一个情绪谱系",
+  "commonMisreadingEn": "Easily read as plain laziness; it's actually micro-resistance under 996 pressure — the same emotional spectrum as quiet quitting.",
+  "accessibilityScore": { "language": 3, "context": 4, "adaptability": 3 },
+  "mediaTemperature": "warm",
+  "tags": ["职场", "摸鱼", "反内卷"],
+  "memeLineage": [
+    { "date": "2020-01", "event": "成语「浑水摸鱼」在职场语境漂移为「上班偷懒」，在贴吧/微博流行", "eventEn": "The idiom's meaning drifts to 'slacking at work'; spreads on Tieba and Weibo", "type": "origin" },
+    { "date": "2021-06", "event": "「摸鱼神器」搜索量暴涨，衍生壁纸、脚本等工具化内容", "eventEn": "'Moyu gadgets' search volume spikes; wallpapers and scripts follow", "type": "copy" },
+    { "date": "2022-03", "event": "与 quiet quitting 对照讨论，「摸鱼」被定位为微观抵抗", "eventEn": "Discussed alongside quiet quitting; 'moyu' framed as micro-resistance", "type": "mutation" },
+    { "date": "2022-09", "event": "外媒将摸鱼与「带薪拉屎」并称中式摸鱼文化，Reddit 讨论引入", "eventEn": "Foreign media group moyu with 'paid pooping' as Chinese slack culture; Reddit picks it up", "type": "crossover" },
+    { "date": "2023-11", "event": "「摸鱼」概念回流为「工资小偷」等英语段子", "eventEn": "The concept flows back as 'wage thief' English jokes", "type": "reimport" }
+  ],
+  "likes": 4380,
+  "shares": 1260,
+  "image": "https://placehold.co/300x200/1DB954/FFFFFF?text=摸鱼"
+}

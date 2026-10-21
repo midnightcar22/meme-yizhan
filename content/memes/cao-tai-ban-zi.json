@@ -1,0 +1,35 @@
+{
+  "id": "cao-tai-ban-zi",
+  "nameCN": "草台班子",
+  "nameEN": "Makeshift Troupe",
+  "titleEn": "Caotaibanzi (草台班子): 'The World Is a Makeshift Troupe' — China's Reassuring Nihilism",
+  "summaryEn": "A caotai banzi was a makeshift theater troupe. In 2024 the phrase went viral as 'the world is one big makeshift troupe' — the realization we're all improvising.",
+  "pinyin": "cao tai ban zi",
+  "emotionEquivalent": "草台戏班子 / 大家都是草台",
+  "emotionEquivalentEn": "amateur hour / everyone is winging it",
+  "symbolLayer": {
+    "literalTranslation": "临时搭起来的戏台班子",
+    "literalTranslationEn": "Grass-stage troupe (caotaibanzi)",
+    "explanation": "传统戏曲行业词汇的隐喻化：把世界比作临时搭台的草台戏，谁都别装专业",
+    "explanationEn": "A metaphor from traditional opera: the world as a hastily built stage troupe — no one is as professional as they pretend."
+  },
+  "origin": "本为戏曲史术语（民国乡间流动戏班），2023-2024 年以「世界是一个巨大的草台班子」句式刷屏，入选《语言文字周报》2024 十大网络流行语",
+  "originEn": "Originally an opera-history term (roving rural troupes in the Republican era); the 2023-2024 phrase 'the world is one big makeshift troupe' went viral and made the 2024 top-ten list.",
+  "usage": "两种语气：① 安慰剂（「大家都是草台班子，别慌」）② 犬儒（「这行业就是草台班子」）；常与「祛魅」连用",
+  "usageEn": "Two tones: a comfort ('everyone is a makeshift troupe, relax') or cynicism ('this industry is a makeshift troupe'); often paired with 'disenchantment'.",
+  "commonMisreading": "不是纯粹的贬义吐槽；它的流行恰恰因为它是「安慰性犬儒」——用揭穿权威的方式缓解焦虑",
+  "commonMisreadingEn": "Not just derogatory snark; it went viral because it's 'comforting cynicism' — relieving anxiety by debunking authority.",
+  "accessibilityScore": { "language": 4, "context": 5, "adaptability": 4 },
+  "mediaTemperature": "warm",
+  "tags": ["社会观察", "犬儒", "职场"],
+  "memeLineage": [
+    { "date": "2023-08", "event": "「世界是一个巨大的草台班子」句式在社交平台刷屏", "eventEn": "'The world is one big makeshift troupe' catchphrase floods social platforms", "type": "origin" },
+    { "date": "2024-01", "event": "入选《语言文字周报》2024 十大网络流行语", "eventEn": "Named among the 2024 top-ten internet catchphrases", "type": "copy" },
+    { "date": "2024-06", "event": "衍生「草台班子理论」「祛魅」等配套说法", "eventEn": "'Makeshift troupe theory' and 'disenchantment' companions emerge", "type": "mutation" },
+    { "date": "2025-01", "event": "海外中文圈与英文媒体引用「makeshift troupe」解读中国式犬儒", "eventEn": "Overseas Chinese circles and English media invoke 'makeshift troupe' to read Chinese cynicism", "type": "crossover" },
+    { "date": "2025-03", "event": "进入日常吐槽语料，成为常用自我开解词", "eventEn": "Enters everyday complaint vocabulary as a self-comfort word", "type": "reimport" }
+  ],
+  "likes": 4650,
+  "shares": 1210,
+  "image": "https://placehold.co/300x200/8B5CF6/FFFFFF?text=草台班子"
+}

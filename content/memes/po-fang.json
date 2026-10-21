@@ -1,0 +1,35 @@
+{
+  "id": "po-fang",
+  "nameCN": "破防",
+  "nameEN": "Defense Broken",
+  "titleEn": "Pofang (破防): When Your Emotional Defense Breaks — China's Most Versatile Emotion Word",
+  "summaryEn": "Pofang, from gaming slang for 'breaking through defense', now means being emotionally overwhelmed — moved to tears, furious, or simply not okay.",
+  "pinyin": "po fang",
+  "emotionEquivalent": "心态崩了 / 泪目",
+  "emotionEquivalentEn": "my defenses broke / I'm not okay (emotionally)",
+  "symbolLayer": {
+    "literalTranslation": "打破防御",
+    "literalTranslationEn": "Defense broken (pofang)",
+    "explanation": "电子游戏术语（攻破防御值）的泛化：把数值化的战斗词汇移植到情感领域",
+    "explanationEn": "A generalized gaming term (breaking through defense values): combat vocabulary transplanted onto the emotional sphere."
+  },
+  "origin": "起源于 MOBA 类游戏（英雄联盟等）的「防御塔/防御值」机制，2019-2020 年在弹幕文化中出圈",
+  "originEn": "Originated in MOBA games (League of Legends etc.) as 'defense tower / defense value'; broke out via danmu culture in 2019-2020.",
+  "usage": "双性情绪词：① 被感动到破防（泪目）② 被气到破防（愤怒）③ 自嘲破防（心态崩了）；上下文决定极性",
+  "usageEn": "A dual-polarity emotion word: moved to tears, outraged, or having a mental breakdown; context decides the polarity.",
+  "commonMisreading": "英文直译「break defense」会让读者误以为仍在谈游戏；它已是纯情绪词",
+  "commonMisreadingEn": "Literal 'break defense' makes readers think it's still about games; it's now a pure emotion word.",
+  "accessibilityScore": { "language": 2, "context": 4, "adaptability": 3 },
+  "mediaTemperature": "hot",
+  "tags": ["情绪", "弹幕文化", "游戏梗"],
+  "memeLineage": [
+    { "date": "2015-06", "event": "MOBA 游戏「防御塔/防御值」术语，「破防」指攻破防御", "eventEn": "MOBA 'defense tower / value' term; 'pofang' means breaking defense", "type": "origin" },
+    { "date": "2019-10", "event": "B 站弹幕文化出圈，「破防了」成为常见弹幕", "eventEn": "Bilibili danmu culture spreads it; 'pofang le' becomes a common comment", "type": "copy" },
+    { "date": "2021-07", "event": "双极情绪词定型：感动破防 / 愤怒破防 / 心态破防", "eventEn": "Dual-polarity emotion word forms: moved / furious / breakdown", "type": "mutation" },
+    { "date": "2023-02", "event": "主流媒体标题开始使用「破防」，海外中文社区开始转译", "eventEn": "Mainstream headlines adopt 'pofang'; overseas Chinese communities translate it", "type": "crossover" },
+    { "date": "2024-03", "event": "英语社区借用「pofang」描述情绪冲击", "eventEn": "English communities borrow 'pofang' for emotional shock", "type": "reimport" }
+  ],
+  "likes": 5010,
+  "shares": 1690,
+  "image": "https://placehold.co/300x200/F4A261/FFFFFF?text=破防"
+}

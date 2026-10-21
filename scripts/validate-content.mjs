@@ -1,7 +1,7 @@
 /**
  * scripts/validate-content.mjs —— 内容校验门卫（投稿进主分支前的自动关卡）
  * 校验 content/memes/*.json：
- *   JSON 可解析、根节点为对象、必填字段、类型、枚举值、
+ *   JSON 可解析、根节点为对象、必填字段（含全部双语 En 字段）、类型、枚举值、
  *   id 与文件名一致且全局唯一、数值范围、谱系节点、引用目标存在、未知字段。
  * 任一失败：打印中文错误并 exit 1；npm run build 前置执行本脚本。
  */
@@ -18,14 +18,16 @@ const LINEAGE_TYPE_ENUM = ["origin", "copy", "mutation", "crossover", "reimport"
 const DATE_RE = /^\d{4}-\d{2}$/;
 
 const KNOWN_FIELDS = new Set([
-  "id", "nameCN", "nameEN", "titleEn", "summaryEn", "pinyin", "emotionEquivalent",
-  "symbolLayer", "origin", "usage", "commonMisreading",
+  "id", "nameCN", "nameEN", "titleEn", "summaryEn", "pinyin",
+  "emotionEquivalent", "emotionEquivalentEn",
+  "symbolLayer", "origin", "originEn", "usage", "usageEn",
+  "commonMisreading", "commonMisreadingEn",
   "accessibilityScore", "mediaTemperature", "tags", "memeLineage",
   "likes", "shares", "image", "related"
 ]);
-const SYMBOL_FIELDS = new Set(["literalTranslation", "explanation"]);
+const SYMBOL_FIELDS = new Set(["literalTranslation", "literalTranslationEn", "explanation", "explanationEn"]);
 const SCORE_FIELDS = new Set(["language", "context", "adaptability"]);
-const LINEAGE_NODE_FIELDS = new Set(["date", "event", "type"]);
+const LINEAGE_NODE_FIELDS = new Set(["date", "event", "eventEn", "type"]);
 
 const errors = [];
 const err = (file, msg) => errors.push(`✗ ${file}: ${msg}`);
@@ -68,8 +70,11 @@ for (const f of files) {
     if (m.id !== base) err(f, `id "${m.id}" 与文件名 "${base}" 不一致（id 即文件名即 URL slug）`);
   }
 
-  // 必填字符串字段
-  for (const k of ["nameCN", "nameEN", "pinyin", "emotionEquivalent", "origin", "usage", "commonMisreading"]) {
+  // 必填字符串字段（中英双语：无后缀为中文，En 为英文）
+  for (const k of ["nameCN", "nameEN", "pinyin",
+                   "emotionEquivalent", "emotionEquivalentEn",
+                   "origin", "originEn", "usage", "usageEn",
+                   "commonMisreading", "commonMisreadingEn"]) {
     if (!isNonEmptyStr(m[k])) err(f, `缺少必填字符串字段 "${k}"`);
   }
 
@@ -83,14 +88,14 @@ for (const f of files) {
     err(f, `summaryEn 长度必须在 80~160 字符之间（当前 ${m.summaryEn.length} 字符）`);
   }
 
-  // symbolLayer
+  // symbolLayer（中英双语）
   if (!m.symbolLayer || typeof m.symbolLayer !== "object" || Array.isArray(m.symbolLayer)) {
     err(f, `缺少必填对象字段 "symbolLayer"`);
   } else {
     for (const k of Object.keys(m.symbolLayer)) {
       if (!SYMBOL_FIELDS.has(k)) err(f, `symbolLayer 存在未知字段 "${k}"`);
     }
-    for (const k of ["literalTranslation", "explanation"]) {
+    for (const k of ["literalTranslation", "literalTranslationEn", "explanation", "explanationEn"]) {
       if (!isNonEmptyStr(m.symbolLayer[k])) err(f, `symbolLayer 缺少必填字符串字段 "${k}"`);
     }
   }
@@ -120,7 +125,7 @@ for (const f of files) {
     err(f, `tags 必须是非空字符串数组`);
   }
 
-  // memeLineage
+  // memeLineage（中英双语事件）
   if (!Array.isArray(m.memeLineage) || !m.memeLineage.length) {
     err(f, `memeLineage 必须是非空数组`);
   } else {
@@ -133,6 +138,7 @@ for (const f of files) {
         err(f, `memeLineage[${i}].date 必须为 YYYY-MM 格式（当前：${JSON.stringify(n.date)}）`);
       }
       if (!isNonEmptyStr(n.event)) err(f, `memeLineage[${i}] 缺少必填字符串字段 "event"`);
+      if (!isNonEmptyStr(n.eventEn)) err(f, `memeLineage[${i}] 缺少必填字符串字段 "eventEn"`);
       if (!LINEAGE_TYPE_ENUM.includes(n.type)) {
         err(f, `memeLineage[${i}].type 枚举非法（当前：${JSON.stringify(n.type)}，允许：${LINEAGE_TYPE_ENUM.join("/")}）`);
       }

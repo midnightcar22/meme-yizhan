@@ -68,5 +68,5 @@ npm run preview                   # 本地预览 http://localhost:8080
 ## 上线前清单（自托管域名时）
 
 1. 自托管域名：改 `SITE_URL`（deploy.yml 环境变量或本地 `SITE_URL=https://your.domain npm run build:memes`）；
-2. 每次发版：`sw.js` 的 `CACHE_NAME` 版本号 +1（当前 v8），旧缓存自动清理；
+2. 每次发版：`sw.js` 的 `CACHE_NAME` 版本号 +1（当前 v10），旧缓存自动清理；
 3. OG 图已自托管于 `assets/og/`（`scripts/build-og.mjs` 生成），新增梗后 `npm run build` 会自动补图，无需再依赖 placehold.co。

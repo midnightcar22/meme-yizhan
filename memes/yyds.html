@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--
+  文件名：src/meme-page.template.html
+  项目：MEME·译站 / MemeBridge
+  说明：梗详情页壳模板（勿手改）。scripts/build-memes.mjs 逐梗替换占位符后
+        输出到 memes/<id>.html。占位符：TITLE / DESC / URL / IMAGE / JSONLD / BODY / ID
+-->
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0F0F0F" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="robots" content="index,follow" />
+  <title>YYDS: The Four Letters That Mean 'Eternal God' — China's Alphabet Slang</title>
+  <meta name="description" content="YYDS is the pinyin acronym of yongyuan de shen — 'eternal god', aka the GOAT. It marks China's alphabet-slang wave: acronyms escaping into speech." />
+
+  <!-- Open Graph / Twitter（社交卡片，抓取时只读原始 HTML） -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="MEME·译站" />
+  <meta property="og:title" content="YYDS: The Four Letters That Mean 'Eternal God' — China's Alphabet Slang" />
+  <meta property="og:description" content="YYDS is the pinyin acronym of yongyuan de shen — 'eternal god', aka the GOAT. It marks China's alphabet-slang wave: acronyms escaping into speech." />
+  <meta property="og:url" content="https://memebridge.example.com/memes/yyds.html" />
+  <meta property="og:image" content="https://memebridge.example.com/assets/og/yyds.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="YYDS: The Four Letters That Mean 'Eternal God' — China's Alphabet Slang" />
+  <meta name="twitter:description" content="YYDS is the pinyin acronym of yongyuan de shen — 'eternal god', aka the GOAT. It marks China's alphabet-slang wave: acronyms escaping into speech." />
+  <meta name="twitter:image" content="https://memebridge.example.com/assets/og/yyds.png" />
+  <link rel="canonical" href="https://memebridge.example.com/memes/yyds.html" />
+
+  <!-- 结构化数据（搜索富摘要） -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"YYDS: The Four Letters That Mean 'Eternal God' — China's Alphabet Slang","description":"YYDS is the pinyin acronym of yongyuan de shen — 'eternal god', aka the GOAT. It marks China's alphabet-slang wave: acronyms escaping into speech.","image":"https://memebridge.example.com/assets/og/yyds.png","inLanguage":"en","author":{"@type":"Organization","name":"MemeBridge"},"publisher":{"@type":"Organization","name":"MemeBridge"},"datePublished":"2020-03-01","dateModified":"2023-06-01","mainEntityOfPage":"https://memebridge.example.com/memes/yyds.html"}</script>
+
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="stylesheet" href="../css/tailwind.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body class="text-txt min-h-screen">
+  <!-- 语言切换（app.js toggleLang 即时重渲染） -->
+  <button id="lang-toggle" class="fixed top-3 right-3 z-50 pill px-3 py-1.5 text-xs font-bold bg-surface/90 backdrop-blur border border-primary/60 text-primary"
+          aria-label="Switch language" onclick="toggleLang()">中文</button>
+
+  <main class="max-w-md mx-auto px-4 pt-4 pb-24 min-h-screen">
+    <!-- 静态内容由构建脚本预渲染（爬虫可读全文）；
+         app.js 加载后用 localStorage 用户状态水合此容器 -->
+    <div data-static-wiki="yyds">
+
+    <a href="../index.html#/home" class="text-xs text-muted">← Back to Meme Wiki</a>
+    <header class="mt-3 mb-4">
+      <div class="relative">
+        <span class="temp-badge temp-hot" title="Hot Medium">🔥</span>
+        <img src="https://placehold.co/300x200/F4A261/FFFFFF?text=yyds" alt="yyds meme image" class="w-full h-40 object-cover rounded-2xl mb-3 card" onerror="this.onerror=null;this.src='https://placehold.co/300x200/1a1a1a/666?text=Meme+Error'" />
+      </div>
+      <h1 class="text-2xl font-extrabold">YYDS: The Four Letters That Mean &#39;Eternal God&#39; — China&#39;s Alphabet Slang</h1>
+      <p class="text-sm text-muted mt-1">yyds · yong yuan de shen · ≈ “GOAT (Greatest Of All Time) / legendary”</p>
+      <p class="text-sm text-muted leading-relaxed mt-2">YYDS is the pinyin acronym of yongyuan de shen — &#39;eternal god&#39;, aka the GOAT. It marks China&#39;s alphabet-slang wave: acronyms escaping into speech.</p>
+      <div class="flex flex-wrap gap-2 mt-2">
+        <span class="pill text-[10px] bg-primary/15 text-primary px-2 py-1">#Language Phenomenon</span><span class="pill text-[10px] bg-primary/15 text-primary px-2 py-1">#Acronym Slang</span><span class="pill text-[10px] bg-primary/15 text-primary px-2 py-1">#Esports Meme</span>
+        <span class="pill text-[10px] temp-hot text-white px-2 py-1">🔥 Hot Medium</span>
+      </div>
+    </header>
+    <section class="card border border-white/5 p-4 mb-4">
+      <h2 class="text-sm font-bold mb-2">📉 Cultural Discount Index <span class="text-[10px] text-muted font-normal">More purple stars = higher discount (harder to understand)</span></h2>
+      <div class="space-y-1.5 text-xs">
+        <div class="flex justify-between items-center"><span class="text-muted">Language dependence</span><span><span class="text-primary" style="font-size:8px">★</span><span class="text-primary" style="font-size:8px">★</span><span class="text-white/20" style="font-size:8px">★</span><span class="text-white/20" style="font-size:8px">★</span><span class="text-white/20" style="font-size:8px">★</span></span></div>
+        <div class="flex justify-between items-center"><span class="text-muted">Context depth</span><span><span class="text-primary" style="font-size:8px">★</span><span class="text-primary" style="font-size:8px">★</span><span class="text-primary" style="font-size:8px">★</span><span class="text-white/20" style="font-size:8px">★</span><span class="text-white/20" style="font-size:8px">★</span></span></div>
+        <div class="flex justify-between items-center"><span class="text-muted">Cross-cultural adaptability</span><span><span class="text-primary" style="font-size:8px">★</span><span class="text-primary" style="font-size:8px">★</span><span class="text-white/20" style="font-size:8px">★</span><span class="text-white/20" style="font-size:8px">★</span><span class="text-white/20" style="font-size:8px">★</span></span></div>
+      </div>
+      <p class="text-[10px] text-muted mt-2">Media temperature: 🔥 Hot Medium — High-definition, low participation: fully-formed information</p>
+    </section>
+
+    <h2 class="text-sm font-bold text-muted mb-2">Three-Layer Decoder</h2>
+    
+    <details class="decoder card border border-white/5 mb-3 " open>
+      <summary class="flex items-center justify-between p-4 font-bold text-sm">
+        <span> 🔤 Symbol Layer</span><span class="chevron text-muted">▾</span>
+      </summary>
+      <div class="px-4 pb-4 text-sm text-muted leading-relaxed">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-lg font-extrabold text-txt">yyds <span class="text-xs font-normal text-muted">yong yuan de shen</span></p>
+        <p class="mt-1"><b class="text-txt">Literal translation: </b>Y·Y·D·S (four Latin letters, no hanzi)</p>
+      </div>
+      <button class="btn bg-white/5 border border-white/10 px-3 py-1.5 text-xs" aria-label="Play pronunciation" onclick="pronounce('yyds','Eternal God')">🔊 Pronounce</button>
+    </div>
+    <p class="mt-2"><b class="text-txt">Structure: </b>Pinyin initialism (yongyuan de shen → YYDS); peers include xswl / nsdd / zqsg — keyboard-era shorthand reshaping spoken Chinese.</p>
+    <p class="mt-1"><b class="text-txt">Emotional equivalent: </b><span class="text-primary">“GOAT (Greatest Of All Time) / legendary”</span>(not literal — an emotionally equivalent phrase)</p></div>
+    </details>
+    
+    <details class="decoder card border border-white/5 mb-3 " open>
+      <summary class="flex items-center justify-between p-4 font-bold text-sm">
+        <span> 📖 Context Layer</span><span class="chevron text-muted">▾</span>
+      </summary>
+      <div class="px-4 pb-4 text-sm text-muted leading-relaxed">
+    <div class="border-l-2 border-primary/40 pl-3 mb-3">
+      <div class="relative"><span class="absolute -left-[19px] top-1.5 w-2.5 h-2.5 rounded-full bg-primary"></span>
+        <p><b class="text-txt">Origin: </b>From esports streaming (calling players &#39;eternal gods&#39;), it crossed over into everyday speech in 2020-2021 and drew official-media criticism of &#39;internet slang&#39; in 2021.</p></div>
+      <div class="relative mt-2"><span class="absolute -left-[19px] top-1.5 w-2.5 h-2.5 rounded-full bg-white/40"></span>
+        <p><b class="text-txt">Usage: </b>A universal superlative: &#39;this hotpot is yyds&#39;; youthful, extremely colloquial, banned in formal writing; similar to English lit / GOAT.</p></div>
+    </div>
+    <p class="text-[10px] mb-1.5">Where does this meme fit best? Tap to vote:</p>
+    <div class="flex flex-wrap gap-2">
+      <button class="vote-opt pill text-xs px-3 py-1 bg-white/5 border border-white/10 "
+          aria-label="Vote: #Daily speech" onclick="vote(this,'ctx-yyds-#日常口语')">#Daily speech</button><button class="vote-opt pill text-xs px-3 py-1 bg-white/5 border border-white/10 "
+          aria-label="Vote: #Social media" onclick="vote(this,'ctx-yyds-#社交媒体')">#Social media</button><button class="vote-opt pill text-xs px-3 py-1 bg-white/5 border border-white/10 "
+          aria-label="Vote: #School" onclick="vote(this,'ctx-yyds-#校园')">#School</button><button class="vote-opt pill text-xs px-3 py-1 bg-white/5 border border-white/10 "
+          aria-label="Vote: #Work" onclick="vote(this,'ctx-yyds-#职场')">#Work</button>
+    </div></div>
+    </details>
+    
+    <details class="decoder card border border-white/5 mb-3 stance-warning" >
+      <summary class="flex items-center justify-between p-4 font-bold text-sm">
+        <span> ⚠️ Stance Layer</span><span class="chevron text-muted">▾</span>
+      </summary>
+      <div class="px-4 pb-4 text-sm text-muted leading-relaxed">
+    <div class="grid grid-cols-2 gap-2">
+      <div class="rounded-xl border border-red-500/40 bg-red-500/10 p-3">
+        <p class="text-[10px] font-bold text-red-400 mb-1">⚠️ Common Misreading</p>
+        <p class="text-xs">Not a random letter string — you need pinyin to decode it: a pinyin-culture password, and a symbol of the generational gap online.</p>
+      </div>
+      <div class="rounded-xl border border-green-500/40 bg-green-500/10 p-3">
+        <p class="text-[10px] font-bold text-accentGreen mb-1">✅ What It Actually Means</p>
+        <p class="text-xs">In context: A universal superlative: &#39;this hotpot is yyds&#39;; youthful, extremely colloquial, banned in formal writing; similar to English lit / GOAT. Use negotiated decoding — avoid adversarial misreading.</p>
+      </div>
+    </div></div>
+    </details>
+
+    <h2 class="text-sm font-bold text-muted mt-5 mb-1">Meme Lineage</h2>
+    
+    <div class="lineage-track no-scrollbar -mx-4 px-4">
+      
+        <div class="lnode" role="button" aria-label="Lineage node: Origin" onclick="openLineageSheet('yyds',0)">
+          <span class="link"></span>
+          <div class="dot dot-origin"></div>
+          <p class="text-[10px] text-muted mt-1.5">2020-03</p>
+          <p class="text-[10px] font-bold mt-0.5 leading-tight">Origin</p>
+        </div>
+        <div class="lnode" role="button" aria-label="Lineage node: Replication" onclick="openLineageSheet('yyds',1)">
+          <span class="link"></span>
+          <div class="dot dot-copy"></div>
+          <p class="text-[10px] text-muted mt-1.5">2021-05</p>
+          <p class="text-[10px] font-bold mt-0.5 leading-tight">Replication</p>
+        </div>
+        <div class="lnode" role="button" aria-label="Lineage node: Mutation" onclick="openLineageSheet('yyds',2)">
+          <span class="link"></span>
+          <div class="dot dot-mutation"></div>
+          <p class="text-[10px] text-muted mt-1.5">2021-12</p>
+          <p class="text-[10px] font-bold mt-0.5 leading-tight">Mutation</p>
+        </div>
+        <div class="lnode" role="button" aria-label="Lineage node: Cross-cultural" onclick="openLineageSheet('yyds',3)">
+          <span class="link"></span>
+          <div class="dot dot-crossover"></div>
+          <p class="text-[10px] text-muted mt-1.5">2022-03</p>
+          <p class="text-[10px] font-bold mt-0.5 leading-tight">Cross-cultural</p>
+        </div>
+        <div class="lnode" role="button" aria-label="Lineage node: Localized Re-import" onclick="openLineageSheet('yyds',4)">
+          <span class="link"></span>
+          <div class="dot dot-reimport"></div>
+          <p class="text-[10px] text-muted mt-1.5">2023-06</p>
+          <p class="text-[10px] font-bold mt-0.5 leading-tight">Localized Re-import</p>
+        </div>
+    </div>
+    <p class="text-[10px] text-muted">← Swipe to explore · tap a node for details</p>
+
+    <div class="flex gap-3 mt-4 text-sm">
+      <button class="like-btn btn flex-1 bg-surface border border-white/10 py-2 " aria-label="Like" onclick="likeMeme(event,'yyds')">
+        ❤️ 3980
+      </button>
+      <button class="btn flex-1 bg-surface border border-white/10 py-2" aria-label="Share" onclick="shareMeme('yyds')">↗ Share 1080</button>
+    </div>
+
+    
+    <h2 class="text-sm font-bold text-muted mt-6 mb-2">Micro-tasks · finish any for +10pts</h2>
+    <div class="card border border-white/5 p-4 mb-3">
+      <p class="text-xs font-bold mb-2">Will this meme go viral overseas?</p>
+      <div class="flex gap-2">
+        <button class="vote-opt btn flex-1 border border-white/10 bg-white/5 py-2 text-sm " aria-label="Vote: can go viral" onclick="voteTask(this,'fire-yyds','yes')">🔥 Yes</button>
+        <button class="vote-opt btn flex-1 border border-white/10 bg-white/5 py-2 text-sm " aria-label="Vote: cannot go viral" onclick="voteTask(this,'fire-yyds','no')">❄️ No</button>
+      </div>
+    </div>
+    <div class="card border border-white/5 p-4 mb-3">
+      <p class="text-xs font-bold mb-2">Best English equivalent?</p>
+      <div class="flex gap-2 flex-wrap">
+        
+          <button class="vote-opt pill text-xs px-4 py-1.5 bg-white/5 border border-white/10 "
+            aria-label="Vote: GOAT (Greatest Of All Time)" onclick="voteTask(this,'eq-yyds','GOAT (Greatest Of All Time)')">GOAT (Greatest Of All Time)</button>
+          <button class="vote-opt pill text-xs px-4 py-1.5 bg-white/5 border border-white/10 "
+            aria-label="Vote: legendary" onclick="voteTask(this,'eq-yyds','legendary')">legendary</button>
+          <button class="vote-opt pill text-xs px-4 py-1.5 bg-white/5 border border-white/10 "
+            aria-label="Vote: Fire" onclick="voteTask(this,'eq-yyds','Fire')">Fire</button>
+      </div>
+    </div>
+    <div class="card border border-white/5 p-4 mb-3">
+      <p class="text-xs font-bold mb-2">Add a usage context</p>
+      <form class="flex gap-2" onsubmit="return addSceneTag(event,'yyds')">
+        <input id="scene-yyds" placeholder="e.g. #school #work" maxlength="20" aria-label="Add usage context tag"
+               class="btn flex-1 bg-white/5 border border-white/10 px-3 py-2 text-sm outline-none focus:border-primary" />
+        <button class="btn bg-primary px-4 text-sm font-bold" aria-label="Submit context tag">Submit</button>
+      </form>
+      <div class="flex flex-wrap gap-2 mt-2" id="tags-yyds">
+        
+      </div>
+    </div>
+    </div>
+  </main>
+
+  <!-- 底部固定 Tab Bar（返回应用各页） -->
+  <nav class="tabbar fixed bottom-0 left-0 right-0 bg-surface/95 backdrop-blur border-t border-white/10 z-50" aria-label="Main navigation" data-i18n-aria="nav.aria">
+    <div class="max-w-md mx-auto grid grid-cols-5 text-xs">
+      <a href="../index.html#/home"      class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Home" data-i18n-aria="nav.home"><span>🏠</span><span data-i18n="nav.home">Home</span></a>
+      <a href="../index.html#/discover"  class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Discover" data-i18n-aria="nav.discover"><span>🧭</span><span data-i18n="nav.discover">Discover</span></a>
+      <a href="../index.html#/create"    class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Create" data-i18n-aria="nav.create"><span>🎨</span><span data-i18n="nav.create">Create</span></a>
+      <a href="../index.html#/challenge" class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Challenges" data-i18n-aria="nav.challenge"><span>🏆</span><span data-i18n="nav.challenge">Challenges</span></a>
+      <a href="../index.html#/profile"   class="tab-item flex flex-col items-center py-2 gap-1" aria-label="Me" data-i18n-aria="nav.profile"><span>👤</span><span data-i18n="nav.profile">Me</span></a>
+    </div>
+  </nav>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/wiki-template.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

@@ -4,8 +4,8 @@
  * 产物：memes/<id>.html（含 OG/Twitter/JSON-LD/canonical）+ sitemap.xml + robots.txt
  * 注意：
  *   - 内容唯一来源是 content/memes/*.json（js/data.js 是构建产物，不从这里读）
- *   - 页面 OG/title/JSON-LD 使用英文 titleEn/summaryEn（SEO 面向海外）；
- *     HTML lang=en；中文正文保留在页内「Original 中文原文」分区
+ *   - 页面按英文渲染（Node 下 getLang()=en）：H1/摘要/正文/OG/title/JSON-LD 全英文，
+ *     仅「词条本身 nameCN」与「拼音 pinyin」保留；HTML lang=en（SEO 面向海外）
  *
  * 用法：
  *   node scripts/build-memes.mjs
@@ -25,6 +25,7 @@ const SITE_URL = (process.env.SITE_URL || "https://memebridge.example.com").repl
 // 0) i18n：Node 侧按英文渲染（构建产物面向海外/爬虫）
 const i18n = require(path.join(root, "js", "i18n.js"));
 globalThis.t = i18n.t;
+globalThis.getLang = i18n.getLang;
 
 // 1) 内容源：content/memes/*.json（与 build-data.mjs 同源、同排序）
 const contentDir = path.join(root, "content", "memes");

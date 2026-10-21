@@ -5,23 +5,29 @@
   "titleEn": "Neijuan (内卷) / Involution: The Academic Word Behind China's Rat Race",
   "summaryEn": "Neijuan, from the academic term 'involution', describes ever-harder competition with no real payoff — overtime theater, tiger parenting, degree inflation.",
   "pinyin": "nei juan",
-  "emotionEquivalent": "rat race / involution",
+  "emotionEquivalent": "过度竞争 / 无效内耗",
+  "emotionEquivalentEn": "rat race / involution",
   "symbolLayer": {
-    "literalTranslation": "Inward-rolling",
-    "explanation": "借自人类学术语 involution（内卷化）：系统内部不断精细化却不产生实质增长"
+    "literalTranslation": "向内卷（内部竞争化）",
+    "literalTranslationEn": "Inward-rolling",
+    "explanation": "借自人类学术语 involution（内卷化）：系统内部不断精细化却不产生实质增长",
+    "explanationEn": "Borrowed from the academic term 'involution': a system that keeps refining itself internally without real growth."
   },
   "origin": "2020年清华学生边骑车边用电脑的照片引发热议，学术词'内卷'破圈成大众语",
+  "originEn": "A 2020 photo of a Tsinghua student riding a bike while using a laptop went viral, pushing the academic word 'neijuan' into everyday speech.",
   "usage": "形容过度竞争导致的无效内耗：加班竞赛、鸡娃、学历军备竞赛",
+  "usageEn": "Describes pointless over-competition: overtime races, tiger parenting, credential arms races.",
   "commonMisreading": "常被误用为'竞争激烈'的同义词，实际核心含义是'投入增加但回报不变的恶性内耗'，强调无意义感",
+  "commonMisreadingEn": "Often misused as a synonym for 'fierce competition'; the core meaning is 'vicious internal attrition where input rises but returns don't', emphasizing meaninglessness.",
   "accessibilityScore": { "language": 3, "context": 5, "adaptability": 3 },
   "mediaTemperature": "cold",
   "tags": ["社会", "竞争", "学术梗"],
   "memeLineage": [
-    { "date": "2020-10", "event": "清华'自行车电脑哥'照片走红，'内卷'破圈", "type": "origin" },
-    { "date": "2020-12", "event": "职场/教育场景大规模套用，成为年度热词", "type": "copy" },
-    { "date": "2021-05", "event": "衍生'卷王''开卷''卷不动了'等动词化变体", "type": "mutation" },
-    { "date": "2021-09", "event": "'involution' 进入英语媒体报道，学界重新讨论该概念", "type": "crossover" },
-    { "date": "2023-01", "event": "英语世界用 'neijuan' 直接借词讨论东亚竞争文化", "type": "reimport" }
+    { "date": "2020-10", "event": "清华'自行车电脑哥'照片走红，'内卷'破圈", "eventEn": "Tsinghua 'bike + laptop' photo goes viral; 'neijuan' breaks out of academia", "type": "origin" },
+    { "date": "2020-12", "event": "职场/教育场景大规模套用，成为年度热词", "eventEn": "Mass application in workplace and education scenarios; word of the year", "type": "copy" },
+    { "date": "2021-05", "event": "衍生'卷王''开卷''卷不动了'等动词化变体", "eventEn": "'juan wang', 'kai juan', 'juan bu dong le' — verbal variants emerge", "type": "mutation" },
+    { "date": "2021-09", "event": "'involution' 进入英语媒体报道，学界重新讨论该概念", "eventEn": "'Involution' enters English media coverage, reigniting academic discussion", "type": "crossover" },
+    { "date": "2023-01", "event": "英语世界用 'neijuan' 直接借词讨论东亚竞争文化", "eventEn": "The English-speaking world borrows 'neijuan' to discuss East Asian competition", "type": "reimport" }
   ],
   "likes": 3650,
   "shares": 1100,

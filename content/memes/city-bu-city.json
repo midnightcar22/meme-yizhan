@@ -5,23 +5,29 @@
   "titleEn": "City or Not City? The Viral Chinese-English Phrase Explained",
   "summaryEn": "A Chinglish catchphrase from a vlogger's China travel video, asking if something is trendy or has vibe — proud, not a grammar mistake.",
   "pinyin": "city bu city",
-  "emotionEquivalent": "Is it vibe or not?",
+  "emotionEquivalent": "有没有 vibe（时髦感）？",
+  "emotionEquivalentEn": "Is it vibe or not?",
   "symbolLayer": {
-    "literalTranslation": "City or not city?",
-    "explanation": "中式英语句式'X不X'（肯定+否定疑问），中英混用的标志性结构"
+    "literalTranslation": "城市不城市？（X不X 句式）",
+    "literalTranslationEn": "City or not city?",
+    "explanation": "中式英语句式'X不X'（肯定+否定疑问），中英混用的标志性结构",
+    "explanationEn": "A Chinese-English 'X bu X' construction (affirmative + negative question) — the signature Chinglish pattern."
   },
   "origin": "2024年外国博主保保熊在中国旅游时的中式英语提问",
+  "originEn": "A foreign vlogger's Chinglish question while traveling in China in 2024.",
   "usage": "形容事物时髦/土气/有氛围感",
+  "usageEn": "Describes whether something is trendy, tacky or full of vibe.",
   "commonMisreading": "以为是语法错误嘲笑中国人，实际是中式英语自信表达，海外已流行",
+  "commonMisreadingEn": "Mistaken for a grammar error mocking Chinese; it's actually confident Chinglish that has already gone viral overseas.",
   "accessibilityScore": { "language": 1, "context": 2, "adaptability": 5 },
   "mediaTemperature": "warm",
   "tags": ["旅游", "中式英语", "自信"],
   "memeLineage": [
-    { "date": "2024-06", "event": "保保熊发布原视频", "type": "origin" },
-    { "date": "2024-07", "event": "全网模仿造句", "type": "copy" },
-    { "date": "2024-08", "event": "衍生'好City啊'", "type": "mutation" },
-    { "date": "2024-09", "event": "TikTok #citynotcity标签流行", "type": "crossover" },
-    { "date": "2025-03", "event": "海外网友用中式英语反向造句回传中文互联网", "type": "reimport" }
+    { "date": "2024-06", "event": "保保熊发布原视频", "eventEn": "Bao Bao Xiong posts the original video", "type": "origin" },
+    { "date": "2024-07", "event": "全网模仿造句", "eventEn": "Mimicry and sentence-copying across the internet", "type": "copy" },
+    { "date": "2024-08", "event": "衍生'好City啊'", "eventEn": "'So City' variants derived", "type": "mutation" },
+    { "date": "2024-09", "event": "TikTok #citynotcity标签流行", "eventEn": "TikTok #citynotcity trend takes off", "type": "crossover" },
+    { "date": "2025-03", "event": "海外网友用中式英语反向造句回传中文互联网", "eventEn": "Overseas netizens coin Chinglish replies and send them back to the Chinese internet", "type": "reimport" }
   ],
   "likes": 3420,
   "shares": 890,

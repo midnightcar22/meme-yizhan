@@ -1,15 +1,15 @@
 /* ============================================================
  * 文件名：js/wiki-template.js
  * 项目：MEME·译站 / MemeBridge —— 中国梗的跨文化转译平台
- * 版本：v3.4
- * 最后更新：2026-10-17
+ * 版本：v3.7
+ * 最后更新：2026-10-21
  * ------------------------------------------------------------
  * 梗详情页共享模板：浏览器（SPA 水合）与 Node（SSG 构建）共用。
  *   - 浏览器：<script src="js/wiki-template.js"> 挂载全局
  *   - Node：scripts/build-memes.mjs 用 require() 引用
- * 包含：sanitizeInput / fb / stars / miniDiscount / TEMP / LINEAGE_TYPE / wikiPageBody
- * 国际化：全部界面文案经 t()（js/i18n.js）翻译；页面结构为
- *   英文首屏（H1 = titleEn + 摘要 summaryEn）+ 下方「Original 中文原文」分区。
+ * 语言约定：整页内容跟随当前语言渲染（en/zh），仅「词条本身 nameCN」与
+ *   「拼音 pinyin」跨语言不变；界面文案经 t() 翻译，内容字段使用
+ *   无后缀（zh）或 En 后缀（en）版本。
  * 注意：模板内的互动按钮引用 app.js 的全局函数
  *       （likeMeme / voteTask / vote / addSceneTag / shareMeme / openLineageSheet / pronounce）
  * ============================================================ */
@@ -75,6 +75,13 @@
     { key: "#职场", label: "scene.work" }
   ];
 
+  /* 内容标签的本地化显示：中文标签经 tagword 词典翻译；用户自建标签原样显示 */
+  function tagLabel(tag) {
+    const key = "tagword." + tag;
+    const v = t(key);
+    return v.indexOf("[[") === 0 ? tag : v;
+  }
+
   /* 三层解码器折叠面板（Stuart Hall 编码/解码理论） */
   function decoder(title, icon, body, { open = false, extraCls = "" } = {}) {
     return `
@@ -86,56 +93,68 @@
     </details>`;
   }
 
-  /* 梗详情页主体：英文首屏 + Original 中文原文分区
+  /* 梗详情页主体：整页按当前语言渲染（词条与拼音不变）
    * m = 梗对象；u = 用户状态（可选，默认空：{ liked, voted, tags }）
-   * 静态页构建时不传 u（爬虫读取默认态全文），浏览器水合时传 user() */
+   * 静态页构建时不传 u（Node 下 getLang() 为 en，爬虫读取英文全文） */
   function wikiPageBody(m, u) {
     u = u || { liked: [], voted: {}, tags: {} };
     if (!m) return `<p class="text-muted p-8 text-center">${t("common.notFound")}</p>`;
 
+    const isZh = getLang() === "zh";
     const tp = TEMP[m.mediaTemperature] || TEMP.warm;
     const s = m.accessibilityScore || { language: 3, context: 3, adaptability: 3 };
     const liked = (u.liked || []).includes(m.id);
     const voted = u.voted || {};
     const myTags = (u.tags || {})[m.id] || [];
+    const sym = m.symbolLayer || {};
 
-    /* ---------- 英文首屏：标题 + 摘要（SEO/海外用户优先） ---------- */
+    // 语言相关内容字段：无后缀为中文，En 后缀为英文（缺失时回退到另一语言）
+    const heroTitle = isZh ? fb.name(m) : (m.titleEn || m.nameEN || fb.name(m));
+    const heroSub = isZh ? (m.nameEN || "") : fb.name(m); // 另一语言的词条名
+    const heroSummary = isZh ? fb.usage(m) : (m.summaryEn || "");
+    const emotion = isZh ? (m.emotionEquivalent || "") : (m.emotionEquivalentEn || m.emotionEquivalent || "");
+    const literal = isZh ? (sym.literalTranslation || "—") : (sym.literalTranslationEn || sym.literalTranslation || "—");
+    const explanation = isZh ? (sym.explanation || "—") : (sym.explanationEn || sym.explanation || "—");
+    const origin = isZh ? fb.origin(m) : (m.originEn || m.origin || t("common.fallback.origin"));
+    const usage = isZh ? fb.usage(m) : (m.usageEn || m.usage || t("common.fallback.usage"));
+    const misreading = isZh ? (m.commonMisreading || t("common.fallback.misreading")) : (m.commonMisreadingEn || m.commonMisreading || t("common.fallback.misreading"));
+
+    /* ---------- 首屏：标题 + 摘要（词条名 + 拼音在两种语言下都不变） ---------- */
     const hero = `
     <a href="../index.html#/home" class="text-xs text-muted">${t("wiki.back")}</a>
     <header class="mt-3 mb-4">
       <div class="relative">
         <span class="temp-badge ${tp.cls}" title="${t("temp." + (m.mediaTemperature || "warm"))}">${tp.icon}</span>
-        <img src="${m.image}" alt="${fb.name(m)} meme image" class="w-full h-40 object-cover rounded-2xl mb-3 card" ${fb.imgErr} />
+        <img src="${m.image}" alt="${t("meme.alt", { name: fb.name(m) })}" class="w-full h-40 object-cover rounded-2xl mb-3 card" ${fb.imgErr} />
       </div>
-      <h1 class="text-2xl font-extrabold">${sanitizeInput(m.titleEn || m.nameEN || fb.name(m))}</h1>
-      <p class="text-sm text-muted mt-1">${sanitizeInput(fb.name(m))} · ${sanitizeInput(m.pinyin || "")} · ≈ “${sanitizeInput(m.emotionEquivalent || "")}”</p>
-      <p class="text-sm text-muted leading-relaxed mt-2">${sanitizeInput(m.summaryEn || "")}</p>
+      <h1 class="text-2xl font-extrabold">${sanitizeInput(heroTitle)}</h1>
+      <p class="text-sm text-muted mt-1">${sanitizeInput(heroSub)} · ${sanitizeInput(m.pinyin || "")} · ≈ “${sanitizeInput(emotion)}”</p>
+      <p class="text-sm text-muted leading-relaxed mt-2">${sanitizeInput(heroSummary)}</p>
       <div class="flex flex-wrap gap-2 mt-2">
-        ${(m.tags || []).map(x => `<span class="pill text-[10px] bg-primary/15 text-primary px-2 py-1">#${sanitizeInput(x)}</span>`).join("")}
+        ${(m.tags || []).map(x => `<span class="pill text-[10px] bg-primary/15 text-primary px-2 py-1">#${sanitizeInput(tagLabel(x))}</span>`).join("")}
         <span class="pill text-[10px] ${tp.cls} text-white px-2 py-1">${tp.icon} ${t("temp." + (m.mediaTemperature || "warm"))}</span>
       </div>
     </header>`;
 
-    /* ---------- 符号层（默认展开）：中文名/拼音/情绪等价词 + 发音按钮 ---------- */
-    const sym = m.symbolLayer || {};
+    /* ---------- 符号层（默认展开）：词条/拼音 + 字面翻译 + 结构说明 + 情绪等价 ---------- */
     const symbolBody = `
     <div class="flex items-center justify-between">
       <div>
         <p class="text-lg font-extrabold text-txt">${sanitizeInput(fb.name(m))} <span class="text-xs font-normal text-muted">${sanitizeInput(m.pinyin || "")}</span></p>
-        <p class="mt-1"><b class="text-txt">${t("symbol.literal")}</b>${sanitizeInput(sym.literalTranslation || "—")}</p>
+        <p class="mt-1"><b class="text-txt">${t("symbol.literal")}</b>${sanitizeInput(literal)}</p>
       </div>
       <button class="btn bg-white/5 border border-white/10 px-3 py-1.5 text-xs" aria-label="${t("symbol.pronounceAria")}" onclick="pronounce('${sanitizeInput(fb.name(m))}','${sanitizeInput(m.nameEN || "")}')">${t("symbol.pronounce")}</button>
     </div>
-    <p class="mt-2"><b class="text-txt">${t("symbol.explain")}</b>${sanitizeInput(sym.explanation || "—")}</p>
-    <p class="mt-1"><b class="text-txt">${t("symbol.emotion")}</b><span class="text-primary">“${sanitizeInput(m.emotionEquivalent || "")}”</span>${t("symbol.emotionNote")}</p>`;
+    <p class="mt-2"><b class="text-txt">${t("symbol.explain")}</b>${sanitizeInput(explanation)}</p>
+    <p class="mt-1"><b class="text-txt">${t("symbol.emotion")}</b><span class="text-primary">“${sanitizeInput(emotion)}”</span>${t("symbol.emotionNote")}</p>`;
 
     /* ---------- 语境层（默认展开）：起源迷你竖线时间线 + 可点击投票的场景标签 ---------- */
     const contextBody = `
     <div class="border-l-2 border-primary/40 pl-3 mb-3">
       <div class="relative"><span class="absolute -left-[19px] top-1.5 w-2.5 h-2.5 rounded-full bg-primary"></span>
-        <p><b class="text-txt">${t("context.origin")}</b>${sanitizeInput(fb.origin(m))}</p></div>
+        <p><b class="text-txt">${t("context.origin")}</b>${sanitizeInput(origin)}</p></div>
       <div class="relative mt-2"><span class="absolute -left-[19px] top-1.5 w-2.5 h-2.5 rounded-full bg-white/40"></span>
-        <p><b class="text-txt">${t("context.usage")}</b>${sanitizeInput(fb.usage(m))}</p></div>
+        <p><b class="text-txt">${t("context.usage")}</b>${sanitizeInput(usage)}</p></div>
     </div>
     <p class="text-[10px] mb-1.5">${t("context.votePrompt")}</p>
     <div class="flex flex-wrap gap-2">
@@ -152,11 +171,11 @@
     <div class="grid grid-cols-2 gap-2">
       <div class="rounded-xl border border-red-500/40 bg-red-500/10 p-3">
         <p class="text-[10px] font-bold text-red-400 mb-1">${t("stance.wrong")}</p>
-        <p class="text-xs">${sanitizeInput(m.commonMisreading || t("common.fallback.misreading"))}</p>
+        <p class="text-xs">${sanitizeInput(misreading)}</p>
       </div>
       <div class="rounded-xl border border-green-500/40 bg-green-500/10 p-3">
         <p class="text-[10px] font-bold text-accentGreen mb-1">${t("stance.right")}</p>
-        <p class="text-xs">${t("stance.rightPrefix")}${sanitizeInput(fb.usage(m))}${t("stance.rightSuffix")}</p>
+        <p class="text-xs">${t("stance.rightPrefix")}${sanitizeInput(usage)}${t("stance.rightSuffix")}</p>
       </div>
     </div>`;
 
@@ -174,6 +193,7 @@
     <p class="text-[10px] text-muted">${t("lineage.hint")}</p>`;
 
     /* ---------- 微参与任务区（参与式文化 L1 轻互动 + L2 语义标注） ---------- */
+    const eqOptions = emotion.split("/").map(x => x.trim()).filter(Boolean).concat([t("tasks.eqFire")]).slice(0, 3);
     const tasks = `
     <h2 class="text-sm font-bold text-muted mt-6 mb-2">${t("tasks.title")}</h2>
     <div class="card border border-white/5 p-4 mb-3">
@@ -186,7 +206,7 @@
     <div class="card border border-white/5 p-4 mb-3">
       <p class="text-xs font-bold mb-2">${t("tasks.eq")}</p>
       <div class="flex gap-2 flex-wrap">
-        ${(m.emotionEquivalent || "").split("/").map(x => x.trim()).concat(["Fire"]).slice(0, 3).map(opt => `
+        ${eqOptions.map(opt => `
           <button class="vote-opt pill text-xs px-4 py-1.5 bg-white/5 border border-white/10 ${voted[`eq-${m.id}`] === opt ? "voted" : ""}"
             aria-label="${t("tasks.eqAria", { opt: sanitizeInput(opt) })}" onclick="voteTask(this,'eq-${m.id}','${sanitizeInput(opt)}')">${sanitizeInput(opt)}</button>`).join("")}
       </div>
@@ -203,16 +223,7 @@
       </div>
     </div>`;
 
-    /* ---------- Original 中文原文分区 ---------- */
-    const original = `
-    <h2 class="text-sm font-bold text-muted mt-6 mb-1">${t("wiki.original")}</h2>
-    <p class="text-[10px] text-muted mb-3">${t("wiki.originalNote")}</p>
-
-    <header class="mb-4">
-      <h2 class="text-xl font-extrabold">${sanitizeInput(fb.name(m))} <span class="text-sm font-normal text-muted">${sanitizeInput(m.nameEN || "")}</span></h2>
-      <p class="text-sm text-muted">${t("wiki.pinyin")}${sanitizeInput(m.pinyin || "")} ｜ ${t("wiki.emotionInline")}<span class="text-primary">“${sanitizeInput(m.emotionEquivalent || "")}”</span></p>
-    </header>
-
+    return hero + `
     <section class="card border border-white/5 p-4 mb-4">
       <h2 class="text-sm font-bold mb-2">${t("wiki.discount.title")} <span class="text-[10px] text-muted font-normal">${t("wiki.discount.note")}</span></h2>
       <div class="space-y-1.5 text-xs">
@@ -239,9 +250,7 @@
     </div>
 
     ${tasks}`;
-
-    return hero + original;
   }
 
-  return { sanitizeInput, fb, stars, miniDiscount, TEMP, LINEAGE_TYPE, wikiPageBody };
+  return { sanitizeInput, fb, stars, miniDiscount, TEMP, LINEAGE_TYPE, tagLabel, wikiPageBody };
 });

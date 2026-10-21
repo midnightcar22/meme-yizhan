@@ -98,7 +98,7 @@ const check = (name, cond) => {
   dom.window.close();
 }
 
-/* ---------- 5. 静态详情页：英文首屏 + 中文正文 + 互动 ---------- */
+/* ---------- 5. 静态详情页：英文版全英文 + 中文版全中文 + 互动 ---------- */
 {
   const dom = await loadPage("memes/city-bu-city.html");
   await sleep(80);
@@ -107,9 +107,9 @@ const check = (name, cond) => {
   check("详情页 html lang=en", doc.documentElement.lang === "en");
   check("详情页 H1 为英文标题（titleEn）", (doc.querySelector("h1")?.textContent || "").includes("City or Not City?"));
   check("详情页含英文摘要（summaryEn）", doc.body.textContent.includes("Chinglish catchphrase"));
-  check("Original 分区标题在（🌏 Original · 中文原文）", doc.body.textContent.includes("Original · 中文原文"));
-  check("中文正文内容仍在（起源：保保熊）", doc.body.textContent.includes("保保熊"));
-  check("中文正文内容仍在（中式英语结构说明）", doc.body.textContent.includes("中式英语"));
+  check("详情页英文正文（originEn）", doc.body.textContent.includes("foreign vlogger"));
+  check("详情页英文正文（misreadingEn）", doc.body.textContent.includes("confident Chinglish"));
+  check("英文版无中文正文残留", !doc.body.textContent.includes("保保熊"));
   check("og:title 为英文", (doc.querySelector('meta[property="og:title"]')?.content || "").includes("City or Not City?"));
   check("og:description 为英文摘要", (doc.querySelector('meta[property="og:description"]')?.content || "").includes("Chinglish"));
   check("JSON-LD headline 为英文", (doc.querySelector('script[type="application/ld+json"]')?.textContent || "").includes("City or Not City?"));
@@ -121,14 +121,26 @@ const check = (name, cond) => {
   check("静态页点赞交互正常（liked 落库）", (stored.liked || []).includes("city-bu-city"));
   dom.window.close();
 
-  /* 静态页 + 已选中文：水合后界面为中文，H1 仍为英文标题（双语分区设计） */
+  /* 静态页 + 已选中文：整页切成中文（词条与拼音不变） */
   const domZh = await loadPage("memes/city-bu-city.html", "zh");
   await sleep(80);
   const docZh = domZh.window.document;
-  check("静态页切中文后界面为中文（三层解码器）", docZh.body.textContent.includes("三层解码器"));
-  check("静态页切中文后 H1 仍为英文标题（titleEn）", (docZh.querySelector("h1")?.textContent || "").includes("City or Not City?"));
-  check("静态页切中文后中文标题区（常见误读）", docZh.body.textContent.includes("常见误读"));
+  check("中文版 H1 为词条本身（City不City）", (docZh.querySelector("h1")?.textContent || "").includes("City不City"));
+  check("中文版界面为中文（三层解码器）", docZh.body.textContent.includes("三层解码器"));
+  check("中文版正文为中文（保保熊）", docZh.body.textContent.includes("保保熊"));
+  check("中文版拼音标注仍在（city bu city）", docZh.body.textContent.includes("city bu city"));
+  check("中文版情绪等价为中文", docZh.body.textContent.includes("有没有 vibe"));
   domZh.window.close();
+}
+
+/* ---------- 6. 新增梗可访问（yyds） ---------- */
+{
+  const dom = await loadPage("memes/yyds.html");
+  await sleep(60);
+  const doc = dom.window.document;
+  check("新增梗页可访问（yyds H1 含 YYDS）", (doc.querySelector("h1")?.textContent || "").includes("YYDS"));
+  check("新增梗页英文 OG（yyds）", (doc.querySelector('meta[property="og:title"]')?.content || "").includes("YYDS"));
+  dom.window.close();
 }
 
 console.log(failures ? `\n✗ ${failures} 项未通过` : "\n✓ 全部通过");

@@ -1,0 +1,35 @@
+{
+  "id": "yyds",
+  "nameCN": "yyds",
+  "nameEN": "Eternal God",
+  "titleEn": "YYDS: The Four Letters That Mean 'Eternal God' — China's Alphabet Slang",
+  "summaryEn": "YYDS is the pinyin acronym of yongyuan de shen — 'eternal god', aka the GOAT. It marks China's alphabet-slang wave: acronyms escaping into speech.",
+  "pinyin": "yong yuan de shen",
+  "emotionEquivalent": "永远的神",
+  "emotionEquivalentEn": "GOAT (Greatest Of All Time) / legendary",
+  "symbolLayer": {
+    "literalTranslation": "永远的神（拼音首字母缩写）",
+    "literalTranslationEn": "Y·Y·D·S (four Latin letters, no hanzi)",
+    "explanation": "拼音首字母缩写（拼音缩写体）：永远的神 → YYDS；同类：xswl（笑死我了）/ nsdd（你说得对）/ zqsg（真情实感）",
+    "explanationEn": "Pinyin initialism (yongyuan de shen → YYDS); peers include xswl / nsdd / zqsg — keyboard-era shorthand reshaping spoken Chinese."
+  },
+  "origin": "出自电竞直播圈（称赞选手「永远的神」），2020-2021 年破圈为全民最高级赞美词，2021 年被官媒点名「网络黑话」引发代际讨论",
+  "originEn": "From esports streaming (calling players 'eternal gods'), it crossed over into everyday speech in 2020-2021 and drew official-media criticism of 'internet slang' in 2021.",
+  "usage": "万能最高级：「这火锅 yyds」；语气年轻且极度口语化，正式写作禁用；用法近似英文 lit/goat",
+  "usageEn": "A universal superlative: 'this hotpot is yyds'; youthful, extremely colloquial, banned in formal writing; similar to English lit / GOAT.",
+  "commonMisreading": "不是随机字母组合，必须知道拼音才能解码——它是「拼音文化的暗号」，也是中文互联网代际沟壑的符号（看不懂=老了）",
+  "commonMisreadingEn": "Not a random letter string — you need pinyin to decode it: a pinyin-culture password, and a symbol of the generational gap online.",
+  "accessibilityScore": { "language": 2, "context": 3, "adaptability": 2 },
+  "mediaTemperature": "hot",
+  "tags": ["语言现象", "缩写体", "电竞梗"],
+  "memeLineage": [
+    { "date": "2020-03", "event": "电竞直播圈将选手称为「永远的神」，缩写 yyds 出现", "eventEn": "Esports streamers call players 'eternal gods'; yyds emerges", "type": "origin" },
+    { "date": "2021-05", "event": "破圈为全民最高级赞美词，各平台刷屏", "eventEn": "Crosses over into a universal superlative; floods platforms", "type": "copy" },
+    { "date": "2021-12", "event": "官媒点名「网络黑话」，引发代际与语言规范讨论", "eventEn": "Official media flag 'internet slang'; generational and language-norm debate", "type": "mutation" },
+    { "date": "2022-03", "event": "TikTok 海外用户用 yyds 玩梗，「歪歪滴艾斯」语音化传播", "eventEn": "TikTok users play with yyds; the 'wai wai di ai si' voiced reading spreads", "type": "crossover" },
+    { "date": "2023-06", "event": "定型为口语成分，与英语 GOAT 互译使用", "eventEn": "Settles into everyday speech, paired with English GOAT", "type": "reimport" }
+  ],
+  "likes": 3980,
+  "shares": 1080,
+  "image": "https://placehold.co/300x200/F4A261/FFFFFF?text=yyds"
+}
